@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { VechaiProvider } from '@vechaiui/theme';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <VechaiProvider>
+      <App />
+    </VechaiProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
