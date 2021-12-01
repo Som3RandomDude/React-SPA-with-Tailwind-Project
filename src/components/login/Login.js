@@ -171,7 +171,7 @@ export default function Login() {
                     <span class="ml-2"
                     >You don't have an account?
                         <a
-                            href="#"
+                            href="/register"
                             class="text-xs ml-2 text-blue-500 font-semibold"
                         >Register now</a
                         ></span

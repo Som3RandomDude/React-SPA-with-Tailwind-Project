@@ -1,6 +1,6 @@
 export default function Home() {
     return (
-        <body className="  items-center justify-center" >
+        <div className="  items-center justify-center" >
         <div className=" bg-gray-100">
 
 
@@ -151,6 +151,6 @@ export default function Home() {
           </div>
         
         </div>
-      </body>
+      </div>
     )
 }

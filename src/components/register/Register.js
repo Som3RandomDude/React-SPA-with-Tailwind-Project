@@ -2,85 +2,312 @@ import { LockClosedIcon } from '@heroicons/react/solid'
 
 export default function Register() {
   return (
-    <>
-    
-      <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-md w-full space-y-8">
-          <div>
-            <img
-              className="mx-auto h-12 w-auto"
-              src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-              alt="Workflow"
-            />
-            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign up with Email</h2>
-            <p className="mt-2 text-center text-sm text-gray-600">
-
-            </p>
-          </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
-            <input type="hidden" name="remember" defaultValue="true" />
-            <div className="rounded-md shadow-sm -space-y-px">
-              <div>
-                <label htmlFor="email-address" className="sr-only">
-                  Email address
-                </label>
-                <input
-                  id="email-address"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Email address"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="password" className="sr-only">
-                  Password
-                </label>
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  autoComplete="current-password"
-                  required
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Password"
-                />
-              </div>
-              <div>
-                <label htmlFor="password" className="sr-only">
-                  Password
-                </label>
-                <input
-                  id="password"
-                  name="passwordRepeat"
-                  type="password"
-                  autoComplete="current-password"
-                  required
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Repeat Password"
-                />
-              </div>
-            </div>
-
-
-
-            <div>
-              <button
-                type="submit"
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              >
-                <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-                  <LockClosedIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" />
-                </span>
-                Sign up
-              </button>
-            </div>
-          </form>
-        </div>
+    <div
+    class="min-h-screen flex flex-col items-center justify-center bg-gray-100"
+  >
+    <div
+      class="
+        flex flex-col
+        bg-white
+        shadow-md
+        px-4
+        sm:px-6
+        md:px-8
+        lg:px-10
+        py-8
+        rounded-3xl
+        w-50
+        max-w-md
+      "
+    >
+      <div class="font-medium self-center text-xl sm:text-3xl text-gray-800">
+        Join us Now
       </div>
-    </>
+      <div class="mt-4 self-center text-xl sm:text-sm text-gray-800">
+        Enter your credentials to get an access account
+      </div>
+
+      <div class="mt-10">
+        <form action="#" method="POST">
+          <div class="flex flex-col mb-5">
+            <label
+              for="first-name"
+              class="mb-1 text-xs tracking-wide text-gray-600"
+              >First Name:</label>
+            <div class="relative">
+              <div
+                class="
+                  inline-flex
+                  items-center
+                  justify-center
+                  absolute
+                  left-0
+                  top-0
+                  h-full
+                  w-10
+                  text-gray-400
+                "
+              >
+                <i class="fas fa-user text-blue-500"></i>
+              </div>
+
+              <input
+                id="firstName"
+                type="text"
+                name="firstName"
+                class="
+                  text-sm
+                  placeholder-gray-500
+                  pl-10
+                  pr-4
+                  rounded-2xl
+                  border border-gray-400
+                  w-full
+                  py-2
+                  focus:outline-none focus:border-blue-400
+                "
+                placeholder="Enter your First Name"
+              />
+            </div>
+
+          </div>
+          <div class="flex flex-col mb-5">
+            <label
+              for="lastName"
+              class="mb-1 text-xs tracking-wide text-gray-600"
+              >First Name:</label>
+            <div class="relative">
+              <div
+                class="
+                  inline-flex
+                  items-center
+                  justify-center
+                  absolute
+                  left-0
+                  top-0
+                  h-full
+                  w-10
+                  text-gray-400
+                "
+              >
+                <i class="fas fa-user text-blue-500"></i>
+              </div>
+
+              <input
+                id="lastName"
+                type="text"
+                name="lastName"
+                class="
+                  text-sm
+                  placeholder-gray-500
+                  pl-10
+                  pr-4
+                  rounded-2xl
+                  border border-gray-400
+                  w-full
+                  py-2
+                  focus:outline-none focus:border-blue-400
+                "
+                placeholder="Enter your Last Name"
+              />
+            </div>
+          </div>
+          <div class="flex flex-col mb-5">
+            <label
+              for="email"
+              class="mb-1 text-xs tracking-wide text-gray-600"
+              >E-Mail Address:</label
+            >
+            <div class="relative">
+              <div
+                class="
+                  inline-flex
+                  items-center
+                  justify-center
+                  absolute
+                  left-0
+                  top-0
+                  h-full
+                  w-10
+                  text-gray-400
+                "
+              >
+                <i class="fas fa-at text-blue-500"></i>
+              </div>
+
+              <input
+                id="email"
+                type="email"
+                name="email"
+                class="
+                  text-sm
+                  placeholder-gray-500
+                  pl-10
+                  pr-4
+                  rounded-2xl
+                  border border-gray-400
+                  w-full
+                  py-2
+                  focus:outline-none focus:border-blue-400
+                "
+                placeholder="Enter your email"
+              />
+            </div>
+          </div>
+          <div class="flex flex-col mb-6">
+            <label
+              for="password"
+              class="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
+              >Password:</label
+            >
+            <div class="relative">
+              <div
+                class="
+                  inline-flex
+                  items-center
+                  justify-center
+                  absolute
+                  left-0
+                  top-0
+                  h-full
+                  w-10
+                  text-gray-400
+                "
+              >
+                <span>
+                  <i class="fas fa-lock text-blue-500"></i>
+                </span>
+              </div>
+
+              <input
+                id="password"
+                type="password"
+                name="password"
+                class="
+                  text-sm
+                  placeholder-gray-500
+                  pl-10
+                  pr-4
+                  rounded-2xl
+                  border border-gray-400
+                  w-full
+                  py-2
+                  focus:outline-none focus:border-blue-400
+                "
+                placeholder="Enter your password"
+              />
+              
+            </div>
+          </div>
+          <div class="flex flex-col mb-6">
+            <label
+              for="repeatPassword"
+              class="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
+              >Repeat Password:</label
+            >
+            <div class="relative">
+              <div
+                class="
+                  inline-flex
+                  items-center
+                  justify-center
+                  absolute
+                  left-0
+                  top-0
+                  h-full
+                  w-10
+                  text-gray-400
+                "
+              >
+                <span>
+                  <i class="fas fa-lock text-blue-500"></i>
+                </span>
+              </div>
+
+              <input
+                id="repeatPassword"
+                type="password"
+                name="repeatPassword"
+                class="
+                  text-sm
+                  placeholder-gray-500
+                  pl-10
+                  pr-4
+                  rounded-2xl
+                  border border-gray-400
+                  w-full
+                  py-2
+                  focus:outline-none focus:border-blue-400
+                "
+                placeholder="Repeat your password"
+              />
+              
+            </div>
+          </div>
+          <div class="flex w-full">
+            <button
+              type="submit"
+              class="
+                flex
+                mt-2
+                items-center
+                justify-center
+                focus:outline-none
+                text-white text-sm
+                sm:text-base
+                bg-blue-500
+                hover:bg-blue-600
+                rounded-2xl
+                py-2
+                w-full
+                transition
+                duration-150
+                ease-in
+              "
+            >
+              <span class="mr-2 uppercase">Sign Up</span>
+              <span>
+                <svg
+                  class="h-6 w-6"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="flex justify-center items-center mt-6">
+      <a
+        href="/login"
+        target="_blank"
+        class="
+          inline-flex
+          items-center
+          text-gray-700
+          font-medium
+          text-xs text-center
+        "
+      >
+        <span class="ml-2"
+          >You have an account?
+          <a
+            href="#"
+            class="text-xs ml-2 text-blue-500 font-semibold"
+            >Login here</a
+          ></span
+        >
+      </a>
+    </div>
+  </div>
   )
 }

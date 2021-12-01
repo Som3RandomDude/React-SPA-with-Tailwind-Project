@@ -18,9 +18,12 @@ export default function Header() {
                     </div>
                 </div>
                 <div className="flex-col hidden md:flex md:flex-row md:-mx-4">
-                    <a href="#" className="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Home</a>
-                    <a href="#" className="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">My Profile</a>
-                    <a href="#" className="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Create</a>
+                    <a href="/" className="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Home</a>
+                    <a href="/profile/:profileId" className="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">My Profile</a>
+                    <a href="/create" className="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Create</a>
+                    <a href="/login" className="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Login</a>
+                    <a href="/register" className="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Register</a>
+
                 </div>
             </div>
         </nav>
