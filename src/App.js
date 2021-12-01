@@ -7,6 +7,7 @@ import { Route, Switch } from 'react-router-dom';
 import Login from "./components/login/Login.js";
 import Create from "./components/create/Create.js";
 import Profile from "./components/profile/Profile.js";
+import Post from "./components/post/Post.js";
 
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/create" component={Create} />
         <Route path="/profile" component={Profile} />
+        <Route path="/post/:postId" component={Post} />
+
       </Switch>
 
       <Footer />
