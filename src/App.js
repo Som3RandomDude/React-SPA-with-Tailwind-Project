@@ -5,6 +5,8 @@ import Footer from "./components/footer/Footer.js";
 import Register from './components/register/Register.js';
 import { Route, Switch } from 'react-router-dom';
 import Login from "./components/login/Login.js";
+import Create from "./components/create/Create.js";
+import Profile from "./components/profile/Profile.js";
 
 
 function App() {
@@ -15,7 +17,8 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
-
+        <Route path="/create" component={Create} />
+        <Route path="/profile" component={Profile} />
       </Switch>
 
       <Footer />
