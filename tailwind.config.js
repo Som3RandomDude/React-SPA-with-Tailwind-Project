@@ -11,6 +11,7 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/forms'),
-    require("@vechaiui/core")
+    require("@vechaiui/core"),
+    require('tailwindcss-question-mark')
   ],
 }

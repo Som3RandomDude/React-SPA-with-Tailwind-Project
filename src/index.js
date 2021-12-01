@@ -7,9 +7,9 @@ import { VechaiProvider } from '@vechaiui/theme';
 
 ReactDOM.render(
   <React.StrictMode>
-    <VechaiProvider>
-      <App />
-    </VechaiProvider>
+
+    <App />
+
   </React.StrictMode>,
   document.getElementById('root')
 );
