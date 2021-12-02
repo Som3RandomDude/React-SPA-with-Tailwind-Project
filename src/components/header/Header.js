@@ -6,7 +6,7 @@ export default function Header() {
             <div className="container flex flex-col mx-auto md:flex-row md:items-center md:justify-between">
                 <div className="flex items-center justify-between">
                     <div>
-                        <a href="#" className="text-xl font-bold text-gray-800 md:text-2xl">React SPA Project</a>
+                        <a href="/" className="text-xl font-bold text-gray-800 md:text-2xl">React SPA Project</a>
                     </div>
                     <div>
                         <button type="button" className="block text-gray-800 hover:text-gray-600 focus:text-gray-600 focus:outline-none md:hidden">
