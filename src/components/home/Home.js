@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Home() {
     return (
         <div className="  items-center justify-center" >
@@ -20,22 +22,22 @@ export default function Home() {
                 <div className="mt-6">
                   <div className="max-w-4xl px-10 py-6 mx-auto bg-white rounded-lg shadow-md">
                     <div className="flex items-center justify-between"><span className="font-light text-gray-600">Jun 1,
-                      2020</span><a href="#"
-                        className="px-2 py-1 font-bold text-gray-100 bg-gray-600 rounded hover:bg-gray-500">Laravel</a>
+                      2020</span><Link to="#"
+                        className="px-2 py-1 font-bold text-gray-100 bg-gray-600 rounded hover:bg-gray-500">Laravel</Link>
                     </div>
-                    <div className="mt-2"><a href="#" className="text-2xl font-bold text-gray-700 hover:underline">Build
-                      Your New Idea with Laravel Freamwork.</a>
+                    <div className="mt-2"><Link to="#" className="text-2xl font-bold text-gray-700 hover:underline">Build
+                      Your New Idea with Laravel Freamwork.</Link>
                       <p className="mt-2 text-gray-600">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                         Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim
                         reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!</p>
                     </div>
-                    <div className="flex items-center justify-between mt-4"><a href="#"
-                      className="text-blue-500 hover:underline">Read more</a>
-                      <div><a href="#" className="flex items-center"><img
+                    <div className="flex items-center justify-between mt-4"><Link to="#"
+                      className="text-blue-500 hover:underline">Read more</Link>
+                      <div><Link to="#" className="flex items-center"><img
                         src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=731&amp;q=80"
                         alt="avatar" className="hidden object-cover w-10 h-10 mx-4 rounded-full sm:block" />
                         <h1 className="font-bold text-gray-700 hover:underline">Alex John</h1>
-                      </a></div>
+                      </Link></div>
                     </div>
                   </div>
                 </div>
@@ -44,25 +46,25 @@ export default function Home() {
 
                 <div className="mt-8">
                   <div className="flex">
-                    <a href="#" className="px-3 py-2 mx-1 font-medium text-gray-500 bg-white rounded-md cursor-not-allowed">
+                    <Link to="#" className="px-3 py-2 mx-1 font-medium text-gray-500 bg-white rounded-md cursor-not-allowed">
                       previous
-                    </a>
+                    </Link>
 
-                    <a href="#" className="px-3 py-2 mx-1 font-medium text-gray-700 bg-white rounded-md hover:bg-blue-500 hover:text-white">
+                    <Link to="#" className="px-3 py-2 mx-1 font-medium text-gray-700 bg-white rounded-md hover:bg-blue-500 hover:text-white">
                       1
-                    </a>
+                    </Link>
 
-                    <a href="#" className="px-3 py-2 mx-1 font-medium text-gray-700 bg-white rounded-md hover:bg-blue-500 hover:text-white">
+                    <Link to="#" className="px-3 py-2 mx-1 font-medium text-gray-700 bg-white rounded-md hover:bg-blue-500 hover:text-white">
                       2
-                    </a>
+                    </Link>
 
-                    <a href="#" className="px-3 py-2 mx-1 font-medium text-gray-700 bg-white rounded-md hover:bg-blue-500 hover:text-white">
+                    <Link to="#" className="px-3 py-2 mx-1 font-medium text-gray-700 bg-white rounded-md hover:bg-blue-500 hover:text-white">
                       3
-                    </a>
+                    </Link>
 
-                    <a href="#" className="px-3 py-2 mx-1 font-medium text-gray-700 bg-white rounded-md hover:bg-blue-500 hover:text-white">
+                    <Link to="#" className="px-3 py-2 mx-1 font-medium text-gray-700 bg-white rounded-md hover:bg-blue-500 hover:text-white">
                       Next
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -74,32 +76,32 @@ export default function Home() {
                       <li className="flex items-center"><img
                         src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=731&amp;q=80"
                         alt="avatar" className="object-cover w-10 h-10 mx-4 rounded-full" />
-                        <p><a href="#" className="mx-1 font-bold text-gray-700 hover:underline">Alex John</a><span
+                        <p><Link to="#" className="mx-1 font-bold text-gray-700 hover:underline">Alex John</Link><span
                           className="text-sm font-light text-gray-700">Created 23 Posts</span></p>
                       </li>
                       <li className="flex items-center mt-6"><img
                         src="https://images.unsplash.com/photo-1464863979621-258859e62245?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=333&amp;q=80"
                         alt="avatar" className="object-cover w-10 h-10 mx-4 rounded-full" />
-                        <p><a href="#" className="mx-1 font-bold text-gray-700 hover:underline">Jane Doe</a><span
+                        <p><Link to="#" className="mx-1 font-bold text-gray-700 hover:underline">Jane Doe</Link><span
                           className="text-sm font-light text-gray-700">Created 52 Posts</span></p>
                       </li>
                       <li className="flex items-center mt-6"><img
                         src="https://images.unsplash.com/photo-1531251445707-1f000e1e87d0?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=281&amp;q=80"
                         alt="avatar" className="object-cover w-10 h-10 mx-4 rounded-full" />
-                        <p><a href="#" className="mx-1 font-bold text-gray-700 hover:underline">Lisa Way</a><span
+                        <p><Link to="#" className="mx-1 font-bold text-gray-700 hover:underline">Lisa Way</Link><span
                           className="text-sm font-light text-gray-700">Created 73 Posts</span></p>
                       </li>
                       <li className="flex items-center mt-6"><img
                         src="https://images.unsplash.com/photo-1500757810556-5d600d9b737d?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=735&amp;q=80"
                         alt="avatar" className="object-cover w-10 h-10 mx-4 rounded-full" />
-                        <p><a href="#" className="mx-1 font-bold text-gray-700 hover:underline">Steve Matt</a><span
+                        <p><Link to="#" className="mx-1 font-bold text-gray-700 hover:underline">Steve Matt</Link><span
                           className="text-sm font-light text-gray-700">Created 245 Posts</span></p>
                       </li>
                       <li className="flex items-center mt-6"><img
                         src="https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=373&amp;q=80"
                         alt="avatar" className="object-cover w-10 h-10 mx-4 rounded-full" />
-                        <p><a href="#" className="mx-1 font-bold text-gray-700 hover:underline">Khatab
-                          Wedaa</a><span className="text-sm font-light text-gray-700">Created 332 Posts</span>
+                        <p><Link to="#" className="mx-1 font-bold text-gray-700 hover:underline">Khatab
+                          Wedaa</Link><span className="text-sm font-light text-gray-700">Created 332 Posts</span>
                         </p>
                       </li>
                     </ul>
@@ -109,22 +111,22 @@ export default function Home() {
                   <h1 className="mb-4 text-xl font-bold text-gray-700">Categories</h1>
                   <div className="flex flex-col max-w-sm px-4 py-6 mx-auto bg-white rounded-lg shadow-md">
                     <ul>
-                      <li><a href="#" className="mx-1 font-bold text-gray-700 hover:text-gray-600 hover:underline">-
-                        AWS</a></li>
-                      <li className="mt-2"><a href="#"
+                      <li><Link to="#" className="mx-1 font-bold text-gray-700 hover:text-gray-600 hover:underline">-
+                        AWS</Link></li>
+                      <li className="mt-2"><Link to="#"
                         className="mx-1 font-bold text-gray-700 hover:text-gray-600 hover:underline">-
-                        Laravel</a></li>
-                      <li className="mt-2"><a href="#"
-                        className="mx-1 font-bold text-gray-700 hover:text-gray-600 hover:underline">- Vue</a>
+                        Laravel</Link></li>
+                      <li className="mt-2"><Link to="#"
+                        className="mx-1 font-bold text-gray-700 hover:text-gray-600 hover:underline">- Vue</Link>
                       </li>
-                      <li className="mt-2"><a href="#"
+                      <li className="mt-2"><Link to="#"
                         className="mx-1 font-bold text-gray-700 hover:text-gray-600 hover:underline">-
-                        Design</a></li>
-                      <li className="flex items-center mt-2"><a href="#"
+                        Design</Link></li>
+                      <li className="flex items-center mt-2"><Link to="#"
                         className="mx-1 font-bold text-gray-700 hover:text-gray-600 hover:underline">-
-                        Django</a></li>
-                      <li className="flex items-center mt-2"><a href="#"
-                        className="mx-1 font-bold text-gray-700 hover:text-gray-600 hover:underline">- PHP</a>
+                        Django</Link></li>
+                      <li className="flex items-center mt-2"><Link to="#"
+                        className="mx-1 font-bold text-gray-700 hover:text-gray-600 hover:underline">- PHP</Link>
                       </li>
                     </ul>
                   </div>
@@ -132,16 +134,16 @@ export default function Home() {
                 <div className="px-8 mt-10">
                   <h1 className="mb-4 text-xl font-bold text-gray-700">Recent Post</h1>
                   <div className="flex flex-col max-w-sm px-8 py-6 mx-auto bg-white rounded-lg shadow-md">
-                    <div className="flex items-center justify-center"><a href="#"
-                      className="px-2 py-1 text-sm text-green-100 bg-gray-600 rounded hover:bg-gray-500">Laravel</a>
+                    <div className="flex items-center justify-center"><Link to="#"
+                      className="px-2 py-1 text-sm text-green-100 bg-gray-600 rounded hover:bg-gray-500">Laravel</Link>
                     </div>
-                    <div className="mt-4"><a href="#" className="text-lg font-medium text-gray-700 hover:underline">Build
-                      Your New Idea with Laravel Freamwork.</a></div>
+                    <div className="mt-4"><Link to="#" className="text-lg font-medium text-gray-700 hover:underline">Build
+                      Your New Idea with Laravel Freamwork.</Link></div>
                     <div className="flex items-center justify-between mt-4">
                       <div className="flex items-center"><img
                         src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=731&amp;q=80"
-                        alt="avatar" className="object-cover w-8 h-8 rounded-full" /><a href="#"
-                          className="mx-3 text-sm text-gray-700 hover:underline">Alex John</a></div><span
+                        alt="avatar" className="object-cover w-8 h-8 rounded-full" /><Link to="#"
+                          className="mx-3 text-sm text-gray-700 hover:underline">Alex John</Link></div><span
                             className="text-sm font-light text-gray-600">Jun 1, 2020</span>
                     </div>
                   </div>

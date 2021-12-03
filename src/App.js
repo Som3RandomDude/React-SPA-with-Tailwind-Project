@@ -22,11 +22,11 @@ function App() {
   useEffect(() => {
     auth.onAuthStateChanged(setUser);
   }, [])
-
+  
   const authInfo = {
     isAuthenticated: Boolean(user),
     email: user?.email,
-    id: user?.id
+    id: user?.uid
   };
 
   return (
@@ -35,8 +35,8 @@ function App() {
         <Header />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
           <Route path="/create" component={Create} />
           <Route path="/profile" component={Profile} />
           <Route path="/post/:postId" component={Post} />

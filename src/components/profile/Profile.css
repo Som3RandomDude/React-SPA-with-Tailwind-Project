@@ -5,3 +5,21 @@
 .test-class{
     transform: translateZ(0px)
 }
+
+:root {
+  --tw-bg-opacity: 1;
+    background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
+
+}
+
+.bg-main-color {
+  background-color: var(--main-color);
+}
+
+.text-main-color {
+  color: var(--main-color);
+}
+
+.border-main-color {
+  border-color: var(--main-color);
+}

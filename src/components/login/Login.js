@@ -1,10 +1,40 @@
-export default function Login() {
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { login } from "../services/authService.js";
+
+
+export default function Login({
+    history
+}) 
+{
+    const [error, setError] = useState('');
+    async function loginHandler(e) {
+        e.preventDefault();
+        let formData = new FormData(e.currentTarget);
+        let email = formData.get('email');
+        let password = formData.get('password');
+
+        if (password === '') {
+            return setError("Please fill out the fields");
+        }
+        try {
+            setError('');
+            await login(email, password);
+
+            history.push('/');
+        } catch (error) {
+            setError('Failed to log in');
+        }
+
+    }
+
+
     return (
         <div
-            class="min-h-screen flex flex-col items-center justify-center bg-gray-100"
+            className="min-h-screen flex flex-col items-center justify-center bg-gray-100"
         >
             <div
-                class="
+                className="
         flex flex-col
         bg-white
         shadow-md
@@ -18,24 +48,24 @@ export default function Login() {
         max-w-md
       "
             >
-                <div class="font-medium self-center text-xl sm:text-3xl text-gray-800">
+                <div className="font-medium self-center text-xl sm:text-3xl text-gray-800">
                     Welcome Back
                 </div>
-                <div class="mt-4 self-center text-xl sm:text-sm text-gray-800">
+                <div className="mt-4 self-center text-xl sm:text-sm text-gray-800">
                     Enter your credentials to access your account
                 </div>
 
-                <div class="mt-10">
-                    <form action="#">
-                        <div class="flex flex-col mb-5">
+                <div className="mt-10">
+                    <form action="#" method="POST" onSubmit={loginHandler}>
+                        <div className="flex flex-col mb-5">
                             <label
-                                for="email"
-                                class="mb-1 text-xs tracking-wide text-gray-600"
+                                htmlFor="email"
+                                className="mb-1 text-xs tracking-wide text-gray-600"
                             >E-Mail Address:</label
                             >
-                            <div class="relative">
+                            <div className="relative">
                                 <div
-                                    class="
+                                    className="
                   inline-flex
                   items-center
                   justify-center
@@ -47,14 +77,14 @@ export default function Login() {
                   text-gray-400
                 "
                                 >
-                                    <i class="fas fa-at text-blue-500"></i>
+                                    <i className="fas fa-at text-blue-500"></i>
                                 </div>
 
                                 <input
                                     id="email"
                                     type="email"
                                     name="email"
-                                    class="
+                                    className="
                   text-sm
                   placeholder-gray-500
                   pl-10
@@ -69,15 +99,15 @@ export default function Login() {
                                 />
                             </div>
                         </div>
-                        <div class="flex flex-col mb-6">
+                        <div className="flex flex-col mb-6">
                             <label
-                                for="password"
-                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
+                                htmlFor="password"
+                                className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
                             >Password:</label
                             >
-                            <div class="relative">
+                            <div className="relative">
                                 <div
-                                    class="
+                                    className="
                   inline-flex
                   items-center
                   justify-center
@@ -90,7 +120,7 @@ export default function Login() {
                 "
                                 >
                                     <span>
-                                        <i class="fas fa-lock text-blue-500"></i>
+                                        <i className="fas fa-lock text-blue-500"></i>
                                     </span>
                                 </div>
 
@@ -98,7 +128,7 @@ export default function Login() {
                                     id="password"
                                     type="password"
                                     name="password"
-                                    class="
+                                    className="
                   text-sm
                   placeholder-gray-500
                   pl-10
@@ -114,10 +144,10 @@ export default function Login() {
                             </div>
                         </div>
 
-                        <div class="flex w-full">
+                        <div className="flex w-full">
                             <button
                                 type="submit"
-                                class="
+                                className="
                 flex
                 mt-2
                 items-center
@@ -135,14 +165,14 @@ export default function Login() {
                 ease-in
               "
                             >
-                                <span class="mr-2 uppercase">Sign In</span>
+                                <span className="mr-2 uppercase">Sign In</span>
                                 <span>
                                     <svg
-                                        class="h-6 w-6"
+                                        className="h-6 w-6"
                                         fill="none"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
                                         viewBox="0 0 24 24"
                                         stroke="currentColor"
                                     >
@@ -156,11 +186,11 @@ export default function Login() {
                     </form>
                 </div>
             </div>
-            <div class="flex justify-center items-center mt-6">
-                <a
-                    href="#"
+            <div className="flex justify-center items-center mt-6">
+                <Link
+                    to="/register"
                     target="_blank"
-                    class="
+                    className="
           inline-flex
           items-center
           text-gray-700
@@ -168,15 +198,13 @@ export default function Login() {
           text-xs text-center
         "
                 >
-                    <span class="ml-2"
-                    >You don't have an account?
-                        <a
-                            href="/register"
-                            class="text-xs ml-2 text-blue-500 font-semibold"
-                        >Register now</a
-                        ></span
-                    >
-                </a>
+                    <span className="ml-2"
+                    />You don't have an account? </Link>
+                <Link
+                    to="/register"
+                    className="text-xs ml-2 text-blue-500 font-semibold"
+                >Register now</Link><span />
+
             </div>
         </div>
     )

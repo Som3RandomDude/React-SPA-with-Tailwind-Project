@@ -1,18 +1,41 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { register } from "../services/authService.js";
 
 
-export default function Register() {
 
-  function registerHandler(e) {
+
+export default function Register({
+  history
+}) {
+
+  const [error, setError] = useState('');
+
+  async function registerHandler(e) {
     e.preventDefault();
+    let formData = new FormData(e.currentTarget);
+    let email = formData.get('email');
+    let password = formData.get('password');
+    let repeatPassword = formData.get('repeatPassword');
+    if (password !== repeatPassword) {
+      return setError("Passwords don't match");
+    }
+    try {
+      setError('');
+      await register(email, password);
+      history.push('/');
+    } catch (error) {
+      setError('Failed to create Account');
+    }
 
   }
 
   return (
     <div
-      class="min-h-screen flex flex-col items-center justify-center bg-gray-100"
+      className="min-h-screen flex flex-col items-center justify-center bg-gray-100"
     >
       <div
-        class="
+        className="
         flex flex-col
         bg-white
         shadow-md
@@ -26,23 +49,23 @@ export default function Register() {
         max-w-md
       "
       >
-        <div class="font-medium self-center text-xl sm:text-3xl text-gray-800">
+        <div className="font-medium self-center text-xl sm:text-3xl text-gray-800">
           Join us Now
         </div>
-        <div class="mt-4 self-center text-xl sm:text-sm text-gray-800">
+        <div className="mt-4 self-center text-xl sm:text-sm text-gray-800">
           Enter your credentials to get an access account
         </div>
 
-        <div class="mt-10">
+        <div className="mt-10">
           <form action="#" method="POST" onSubmit={registerHandler}>
-            <div class="flex flex-col mb-5">
+            <div className="flex flex-col mb-5">
               <label
-                for="first-name"
-                class="mb-1 text-xs tracking-wide text-gray-600"
+                htmlFor="first-name"
+                className="mb-1 text-xs tracking-wide text-gray-600"
               >First Name:</label>
-              <div class="relative">
+              <div className="relative">
                 <div
-                  class="
+                  className="
                   inline-flex
                   items-center
                   justify-center
@@ -54,14 +77,14 @@ export default function Register() {
                   text-gray-400
                 "
                 >
-                  <i class="fas fa-user text-blue-500"></i>
+                  <i className="fas fa-user text-blue-500"></i>
                 </div>
 
                 <input
                   id="firstName"
                   type="text"
                   name="firstName"
-                  class="
+                  className="
                   text-sm
                   placeholder-gray-500
                   pl-10
@@ -77,14 +100,14 @@ export default function Register() {
               </div>
 
             </div>
-            <div class="flex flex-col mb-5">
+            <div className="flex flex-col mb-5">
               <label
-                for="lastName"
-                class="mb-1 text-xs tracking-wide text-gray-600"
-              >First Name:</label>
-              <div class="relative">
+                htmlFor="lastName"
+                className="mb-1 text-xs tracking-wide text-gray-600"
+              >Last Name:</label>
+              <div className="relative">
                 <div
-                  class="
+                  className="
                   inline-flex
                   items-center
                   justify-center
@@ -96,14 +119,14 @@ export default function Register() {
                   text-gray-400
                 "
                 >
-                  <i class="fas fa-user text-blue-500"></i>
+                  <i className="fas fa-user text-blue-500"></i>
                 </div>
 
                 <input
                   id="lastName"
                   type="text"
                   name="lastName"
-                  class="
+                  className="
                   text-sm
                   placeholder-gray-500
                   pl-10
@@ -118,15 +141,15 @@ export default function Register() {
                 />
               </div>
             </div>
-            <div class="flex flex-col mb-5">
+            <div className="flex flex-col mb-5">
               <label
-                for="email"
-                class="mb-1 text-xs tracking-wide text-gray-600"
+                htmlFor="email"
+                className="mb-1 text-xs tracking-wide text-gray-600"
               >E-Mail Address:</label
               >
-              <div class="relative">
+              <div className="relative">
                 <div
-                  class="
+                  className="
                   inline-flex
                   items-center
                   justify-center
@@ -138,14 +161,14 @@ export default function Register() {
                   text-gray-400
                 "
                 >
-                  <i class="fas fa-at text-blue-500"></i>
+                  <i className="fas fa-at text-blue-500"></i>
                 </div>
 
                 <input
                   id="email"
                   type="email"
                   name="email"
-                  class="
+                  className="
                   text-sm
                   placeholder-gray-500
                   pl-10
@@ -160,15 +183,15 @@ export default function Register() {
                 />
               </div>
             </div>
-            <div class="flex flex-col mb-6">
+            <div className="flex flex-col mb-6">
               <label
-                for="password"
-                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
+                htmlFor="password"
+                className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
               >Password:</label
               >
-              <div class="relative">
+              <div className="relative">
                 <div
-                  class="
+                  className="
                   inline-flex
                   items-center
                   justify-center
@@ -181,7 +204,7 @@ export default function Register() {
                 "
                 >
                   <span>
-                    <i class="fas fa-lock text-blue-500"></i>
+                    <i className="fas fa-lock text-blue-500"></i>
                   </span>
                 </div>
 
@@ -189,7 +212,7 @@ export default function Register() {
                   id="password"
                   type="password"
                   name="password"
-                  class="
+                  className="
                   text-sm
                   placeholder-gray-500
                   pl-10
@@ -205,15 +228,15 @@ export default function Register() {
 
               </div>
             </div>
-            <div class="flex flex-col mb-6">
+            <div className="flex flex-col mb-6">
               <label
-                for="repeatPassword"
-                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
+                htmlFor="repeatPassword"
+                className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
               >Repeat Password:</label
               >
-              <div class="relative">
+              <div className="relative">
                 <div
-                  class="
+                  className="
                   inline-flex
                   items-center
                   justify-center
@@ -226,7 +249,7 @@ export default function Register() {
                 "
                 >
                   <span>
-                    <i class="fas fa-lock text-blue-500"></i>
+                    <i className="fas fa-lock text-blue-500"></i>
                   </span>
                 </div>
 
@@ -234,7 +257,7 @@ export default function Register() {
                   id="repeatPassword"
                   type="password"
                   name="repeatPassword"
-                  class="
+                  className="
                   text-sm
                   placeholder-gray-500
                   pl-10
@@ -250,10 +273,10 @@ export default function Register() {
 
               </div>
             </div>
-            <div class="flex w-full">
+            <div className="flex w-full">
               <button
                 type="submit"
-                class="
+                className="
                 flex
                 mt-2
                 items-center
@@ -271,14 +294,14 @@ export default function Register() {
                 ease-in
               "
               >
-                <span class="mr-2 uppercase">Sign Up</span>
+                <span className="mr-2 uppercase">Sign Up</span>
                 <span>
                   <svg
-                    class="h-6 w-6"
+                    className="h-6 w-6"
                     fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                   >
@@ -292,11 +315,11 @@ export default function Register() {
           </form>
         </div>
       </div>
-      <div class="flex justify-center items-center mt-6">
-        <a
-          href="/login"
+      <div className="flex justify-center items-center mt-6">
+        <Link
+          to="/login"
           target="_blank"
-          class="
+          className="
           inline-flex
           items-center
           text-gray-700
@@ -304,15 +327,14 @@ export default function Register() {
           text-xs text-center
         "
         >
-          <span class="ml-2"
-          >You have an account?
-            <a
-              href="#"
-              class="text-xs ml-2 text-blue-500 font-semibold"
-            >Login here</a
-            ></span
-          >
-        </a>
+          <span className="ml-2"
+          />You have an account?
+           </Link>
+            <Link
+              to="#"
+              className="text-xs ml-2 text-blue-500 font-semibold"
+            >Login here</Link><span/>
+       
       </div>
     </div>
   )

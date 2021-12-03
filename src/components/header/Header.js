@@ -1,6 +1,36 @@
+import { AuthContext } from "../contexts/authContext.js"
+import { useEffect, useContext } from 'react';
+
+import { Link } from "react-router-dom";
 
 
 export default function Header() {
+    const { isAuthenticated } = useContext(AuthContext);
+
+    useEffect(() => {
+        if (!isAuthenticated) {
+            return;
+        }
+
+    }, [isAuthenticated])
+
+    let guestNavitation = (
+        <>
+            <Link to="/login" className="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Login</Link>
+            <Link to="/register" className="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Register</Link>
+            
+        </>
+    );
+
+    let userNagivation = (
+        <>
+            <Link to="/profile/:profileId" className="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">My Profile</Link>
+            <Link to="/create" className="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Create</Link>
+            <Link to="/logout" className="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Logout</Link>
+
+        </>
+    )
+
     return (
         <nav className="px-6 py-4 bg-white shadow">
             <div className="container flex flex-col mx-auto md:flex-row md:items-center md:justify-between">
@@ -18,11 +48,11 @@ export default function Header() {
                     </div>
                 </div>
                 <div className="flex-col hidden md:flex md:flex-row md:-mx-4">
-                    <a href="/" className="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Home</a>
-                    <a href="/profile/:profileId" className="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">My Profile</a>
-                    <a href="/create" className="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Create</a>
-                    <a href="/login" className="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Login</a>
-                    <a href="/register" className="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Register</a>
+                    <Link to="/" className="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Home</Link>
+                    {isAuthenticated
+                        ? userNagivation
+                        : guestNavitation
+                    }
 
                 </div>
             </div>
