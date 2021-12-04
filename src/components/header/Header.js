@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 
 export default function Header() {
-    const { isAuthenticated } = useContext(AuthContext);
+    const { isAuthenticated,id } = useContext(AuthContext);
 
     useEffect(() => {
         if (!isAuthenticated) {
@@ -24,7 +24,7 @@ export default function Header() {
 
     let userNagivation = (
         <>
-            <Link to="/profile/:profileId" className="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">My Profile</Link>
+            <Link to={`/profile/${id}`} className="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">My Profile</Link>
             <Link to="/create" className="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Create</Link>
             <Link to="/logout" className="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Logout</Link>
 

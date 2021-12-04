@@ -5,8 +5,7 @@ import { login } from "../services/authService.js";
 
 export default function Login({
     history
-}) 
-{
+}) {
     const [error, setError] = useState('');
     async function loginHandler(e) {
         e.preventDefault();

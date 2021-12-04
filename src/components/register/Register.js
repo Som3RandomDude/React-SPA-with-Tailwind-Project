@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
 import { register } from "../services/authService.js";
+import { storeUser } from "../services/userService.js";
+
 
 
 
@@ -9,22 +12,37 @@ export default function Register({
   history
 }) {
 
+
   const [error, setError] = useState('');
+
+
 
   async function registerHandler(e) {
     e.preventDefault();
+
     let formData = new FormData(e.currentTarget);
     let email = formData.get('email');
     let password = formData.get('password');
     let repeatPassword = formData.get('repeatPassword');
+    let firstName = formData.get('firstName');
+    let lastName = formData.get('lastName');
+
+
     if (password !== repeatPassword) {
       return setError("Passwords don't match");
     }
+
     try {
+
       setError('');
-      await register(email, password);
+      let result = await register(email, password);
+     
+      let store = await storeUser(firstName, lastName, email, result.user.uid);
+     
       history.push('/');
+
     } catch (error) {
+      console.log(error);
       setError('Failed to create Account');
     }
 
@@ -329,12 +347,12 @@ export default function Register({
         >
           <span className="ml-2"
           />You have an account?
-           </Link>
-            <Link
-              to="#"
-              className="text-xs ml-2 text-blue-500 font-semibold"
-            >Login here</Link><span/>
-       
+        </Link>
+        <Link
+          to="/login"
+          className="text-xs ml-2 text-blue-500 font-semibold"
+        >Login here</Link><span />
+
       </div>
     </div>
   )
