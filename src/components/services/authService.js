@@ -1,15 +1,16 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../utils/firebase.js";
 
 export const register = (email, password) => {
 
-    const auth = getAuth();
+
     return createUserWithEmailAndPassword(auth, email, password)
 
 
 }
 
 export const login = (email, password) => {
-    const auth = getAuth();
+
     return signInWithEmailAndPassword(auth, email, password)
 
 

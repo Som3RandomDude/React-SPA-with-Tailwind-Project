@@ -302,8 +302,8 @@ export default function Register({
                 focus:outline-none
                 text-white text-sm
                 sm:text-base
-                bg-blue-500
-                hover:bg-blue-600
+                bg-gray-600
+                hover:bg-gray-500
                 rounded-2xl
                 py-2
                 w-full

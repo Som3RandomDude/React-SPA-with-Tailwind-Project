@@ -1,3 +1,7 @@
-body {
-  background: white !important;
+.apost-page {
+  background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
+}
+
+.formDiv {
+  padding-bottom: 19%;
 }

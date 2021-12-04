@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { login } from "../services/authService.js";
 
@@ -6,6 +6,7 @@ import { login } from "../services/authService.js";
 export default function Login({
     history
 }) {
+
     const [error, setError] = useState('');
     async function loginHandler(e) {
         e.preventDefault();
@@ -22,6 +23,7 @@ export default function Login({
 
             history.push('/');
         } catch (error) {
+            console.log(error);
             setError('Failed to log in');
         }
 
@@ -154,8 +156,8 @@ export default function Login({
                 focus:outline-none
                 text-white text-sm
                 sm:text-base
-                bg-blue-500
-                hover:bg-blue-600
+                bg-gray-600
+                hover:bg-gray-500
                 rounded-2xl
                 py-2
                 w-full
