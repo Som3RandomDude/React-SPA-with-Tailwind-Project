@@ -1,5 +1,5 @@
 import { db } from "../utils/firebase.js";
-import { collection, addDoc, setDoc, serverTimestamp, doc } from "@firebase/firestore";
+import { collection, addDoc, setDoc,getDoc, serverTimestamp, doc } from "@firebase/firestore";
 
 export const storeUser = (firstName, lastName, email, id) => {
     return setDoc(doc(db, 'users', id), {
@@ -11,4 +11,8 @@ export const storeUser = (firstName, lastName, email, id) => {
     });
 
 
+}
+
+export const getUser = (id) => {
+    return getDoc(doc(db, 'users', id));
 }

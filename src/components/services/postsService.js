@@ -1,5 +1,5 @@
 import { db } from "../utils/firebase.js";
-import { collection, query, where, addDoc, setDoc, deleteDoc, getDoc, getDocs, updateDoc, serverTimestamp, doc ,limit,orderBy} from "@firebase/firestore";
+import { collection, query, where,Timestamp, addDoc, setDoc, deleteDoc, getDoc, getDocs, updateDoc, serverTimestamp, doc, limit, orderBy } from "@firebase/firestore";
 
 
 
@@ -22,8 +22,8 @@ export const updatePost = (title, description, content, id) => {
         title,
         description,
         content,
-        date: serverTimestamp(),
-    
+        date: Timestamp.fromMillis(serverTimestamp()),
+
     });
 
 
@@ -33,9 +33,8 @@ export const getPost = (id) => {
     return getDoc(doc(db, 'posts', id))
 }
 
-export const getAllPosts = (id) => {
-    const queryOptions = query(collection(db, 'posts'))
-    return getDocs(queryOptions);
+export const getAllPosts = async () => {
+    return getDocs(collection(db, "posts"));
 }
 
 export const getLatestPosts = (id, numberOfPosts) => {

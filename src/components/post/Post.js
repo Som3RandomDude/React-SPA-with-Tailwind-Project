@@ -1,4 +1,12 @@
-export default function Post() {
+import { useEffect } from "react"
+import { getPost } from "../services/postsService.js"
+
+export default function Post({
+   
+}) {
+
+    
+
     return (
         <div class="mt-10">
 
@@ -23,42 +31,9 @@ export default function Post() {
             </div>
 
             <div class="px-4 lg:px-0 mt-12 text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed">
-                <p class="pb-6">Advantage old had otherwise sincerity dependent additions. It in adapted natural hastily is
-                    justice. Six draw
-                    you him full not mean evil. Prepare garrets it expense windows shewing do an. She projection advantages
-                    resolution son indulgence. Part sure on no long life am at ever. In songs above he as drawn to. Gay was
-                    outlived peculiar rendered led six.</p>
-                    <p class="pb-6">Advantage old had otherwise sincerity dependent additions. It in adapted natural hastily is
-                    justice. Six draw
-                    you him full not mean evil. Prepare garrets it expense windows shewing do an. She projection advantages
-                    resolution son indulgence. Part sure on no long life am at ever. In songs above he as drawn to. Gay was
-                    outlived peculiar rendered led six.</p>
-                    <p class="pb-6">Advantage old had otherwise sincerity dependent additions. It in adapted natural hastily is
-                    justice. Six draw
-                    you him full not mean evil. Prepare garrets it expense windows shewing do an. She projection advantages
-                    resolution son indulgence. Part sure on no long life am at ever. In songs above he as drawn to. Gay was
-                    outlived peculiar rendered led six.</p>
-                    <p class="pb-6">Advantage old had otherwise sincerity dependent additions. It in adapted natural hastily is
-                    justice. Six draw
-                    you him full not mean evil. Prepare garrets it expense windows shewing do an. She projection advantages
-                    resolution son indulgence. Part sure on no long life am at ever. In songs above he as drawn to. Gay was
-                    outlived peculiar rendered led six.</p>
-                    <p class="pb-6">Advantage old had otherwise sincerity dependent additions. It in adapted natural hastily is
-                    justice. Six draw
-                    you him full not mean evil. Prepare garrets it expense windows shewing do an. She projection advantages
-                    resolution son indulgence. Part sure on no long life am at ever. In songs above he as drawn to. Gay was
-                    outlived peculiar rendered led six.</p>
-                    <p class="pb-6">Advantage old had otherwise sincerity dependent additions. It in adapted natural hastily is
-                    justice. Six draw
-                    you him full not mean evil. Prepare garrets it expense windows shewing do an. She projection advantages
-                    resolution son indulgence. Part sure on no long life am at ever. In songs above he as drawn to. Gay was
-                    outlived peculiar rendered led six.</p>
-                    <p class="pb-6">Advantage old had otherwise sincerity dependent additions. It in adapted natural hastily is
-                    justice. Six draw
-                    you him full not mean evil. Prepare garrets it expense windows shewing do an. She projection advantages
-                    resolution son indulgence. Part sure on no long life am at ever. In songs above he as drawn to. Gay was
-                    outlived peculiar rendered led six.</p>
+                <p class="pb-6">
 
+                </p>
 
             </div>
         </div>

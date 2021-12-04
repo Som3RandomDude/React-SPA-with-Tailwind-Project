@@ -38,7 +38,7 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/create" component={Create} />
-          <Route path={`/profile/${user?.uid}`} component={Profile} />
+          <Route path={`/profile/:userId`} component={Profile} />
           <Route path="/post/:postId" component={Post} />
           <Route path="/logout" component={() => {
             auth.signOut();
