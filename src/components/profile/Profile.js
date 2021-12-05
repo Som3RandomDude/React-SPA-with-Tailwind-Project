@@ -31,10 +31,10 @@ export default function Profile() {
                                     <div className="bg-white p-3 border-t-4 border-green-400">
                                         <div className="image overflow-hidden">
                                             <img className="h-auto w-full mx-auto"
-                                                src="https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg"
+                                                src="https://scontent.fsof11-1.fna.fbcdn.net/v/t1.6435-9/121410894_1306197053061690_8706680082531526550_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=yfoc64A5uR8AX_l0HF-&_nc_ht=scontent.fsof11-1.fna&oh=6aefe8878efe2610986eeeb0f939a287&oe=61D40895"
                                                 alt="" />
                                         </div>
-                                        <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">Jane Doe</h1>
+                                        <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">Най Големия Чакал</h1>
                                         <h3 className="text-gray-600 font-lg text-semibold leading-6">Owner at Her Company Inc.</h3>
                                         <p className="text-sm text-gray-500 hover:text-gray-600 leading-6">Lorem ipsum dolor sit amet
                                             consectetur adipisicing elit.

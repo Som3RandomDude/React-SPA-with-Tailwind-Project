@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { PostCard } from "../post/PostCard.js";
 import { LatestPost } from "../post/LatestPost.js";
 import { getAllPosts, getPost, getLatestPosts } from "../services/postsService.js";
+import { TopAuthors } from "./authors/TopAuthors.js";
 
 export default function Home() {
 
@@ -13,10 +14,10 @@ export default function Home() {
     async function getData() {
       try {
         let postsSnapshot = await getLatestPosts(10);
-        let lasterSnapshot = await getLatestPosts(1);
+        let latestSnapshot = await getLatestPosts(1);
 
         setPosts(postsSnapshot.docs.map(doc => ({ ...doc.data(), postId: doc.id })));
-        setLatest(lasterSnapshot.docs.map(doc => ({ ...doc.data(), postId: doc.id })));
+        setLatest(latestSnapshot.docs.map(doc => ({ ...doc.data(), postId: doc.id })));
       } catch (error) {
         setError(error)
       }
@@ -25,7 +26,7 @@ export default function Home() {
     getData();
   }, [])
 
- 
+
 
 
   return (
@@ -49,8 +50,7 @@ export default function Home() {
               {posts?.map(props =>
                 <PostCard key={props.postId} props={props} />
               )}
-
-
+       
 
               <div className="mt-8">
                 <div className="flex">
@@ -76,45 +76,11 @@ export default function Home() {
                 </div>
               </div>
             </div>
+
             <div className="hidden w-4/12 -mx-8 lg:block">
-              <div className="px-8">
-                <h1 className="mb-4 text-xl font-bold text-gray-700">Authors</h1>
-                <div className="flex flex-col max-w-sm px-6 py-4 mx-auto bg-white rounded-lg shadow-md">
-                  <ul className="-mx-4">
-                    <li className="flex items-center"><img
-                      src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=731&amp;q=80"
-                      alt="avatar" className="object-cover w-10 h-10 mx-4 rounded-full" />
-                      <p><Link to="#" className="mx-1 font-bold text-gray-700 hover:underline">Alex John</Link><span
-                        className="text-sm font-light text-gray-700">Created 23 Posts</span></p>
-                    </li>
-                    <li className="flex items-center mt-6"><img
-                      src="https://images.unsplash.com/photo-1464863979621-258859e62245?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=333&amp;q=80"
-                      alt="avatar" className="object-cover w-10 h-10 mx-4 rounded-full" />
-                      <p><Link to="#" className="mx-1 font-bold text-gray-700 hover:underline">Jane Doe</Link><span
-                        className="text-sm font-light text-gray-700">Created 52 Posts</span></p>
-                    </li>
-                    <li className="flex items-center mt-6"><img
-                      src="https://images.unsplash.com/photo-1531251445707-1f000e1e87d0?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=281&amp;q=80"
-                      alt="avatar" className="object-cover w-10 h-10 mx-4 rounded-full" />
-                      <p><Link to="#" className="mx-1 font-bold text-gray-700 hover:underline">Lisa Way</Link><span
-                        className="text-sm font-light text-gray-700">Created 73 Posts</span></p>
-                    </li>
-                    <li className="flex items-center mt-6"><img
-                      src="https://images.unsplash.com/photo-1500757810556-5d600d9b737d?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=735&amp;q=80"
-                      alt="avatar" className="object-cover w-10 h-10 mx-4 rounded-full" />
-                      <p><Link to="#" className="mx-1 font-bold text-gray-700 hover:underline">Steve Matt</Link><span
-                        className="text-sm font-light text-gray-700">Created 245 Posts</span></p>
-                    </li>
-                    <li className="flex items-center mt-6"><img
-                      src="https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=373&amp;q=80"
-                      alt="avatar" className="object-cover w-10 h-10 mx-4 rounded-full" />
-                      <p><Link to="#" className="mx-1 font-bold text-gray-700 hover:underline">Khatab
-                        Wedaa</Link><span className="text-sm font-light text-gray-700">Created 332 Posts</span>
-                      </p>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+
+             
+              <TopAuthors />
               <div className="px-8 mt-10">
                 <h1 className="mb-4 text-xl font-bold text-gray-700">Categories</h1>
                 <div className="flex flex-col max-w-sm px-4 py-6 mx-auto bg-white rounded-lg shadow-md">
@@ -143,8 +109,8 @@ export default function Home() {
               {latest?.map(props =>
                 <LatestPost key={props.postId} props={props} />
               )}
-   
-           
+
+
 
             </div>
           </div>

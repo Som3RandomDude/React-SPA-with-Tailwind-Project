@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../contexts/authContext.js';
 import { uploadFile } from '../services/fileService.js';
 import { createPost } from '../services/postsService.js';
-import { updateUserPosts } from '../services/userService.js';
+import { createUserPost } from '../services/userService.js';
 import './Create.css';
 
 export default function Create({
@@ -22,7 +22,7 @@ export default function Create({
         try {
             let uploadResult = await uploadFile('posts', upload);
             let result = await createPost(title, description, content, uploadResult, id);
-            let test = await updateUserPosts(id, result.id);
+            let test = await createUserPost(id, result.id);
             console.log(result.id);
             console.log(test);
             history.push('/');
