@@ -22,7 +22,7 @@ export const updatePost = (title, description, content, id) => {
         title,
         description,
         content,
-        date: Timestamp.fromMillis(serverTimestamp()),
+        date: serverTimestamp(),
 
     });
 

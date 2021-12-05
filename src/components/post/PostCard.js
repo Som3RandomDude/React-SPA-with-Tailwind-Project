@@ -19,6 +19,7 @@ export const PostCard = (props) => {
         }
         getData();
     }, [])
+    
     let properDate = new Date(properties.date.seconds*1000).toLocaleDateString();
     
     
@@ -36,8 +37,8 @@ export const PostCard = (props) => {
                 <div className="flex items-center justify-between mt-4"><Link to={`/post/${properties.postId}`}
                     className="text-blue-500 hover:underline">Read more</Link>
                     <div><Link to="#" className="flex items-center"><img   
-                        src={`${author?.image ? author.image:''}`}
-                        alt="" className="hidden object-cover w-10 h-10 mx-4 rounded-full sm:block" />
+                        src={`${author?.image ? author.image:"avatar"}`}
+                        alt="avatar" className="hidden object-cover w-10 h-10 mx-4 rounded-full sm:block" />
                         <h1 className="font-bold text-gray-700 hover:underline">{`${author?.firstname} ${author?.lastname}`}</h1>
                     </Link></div>
                 </div>

@@ -1,38 +1,61 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { getPost } from "../services/postsService.js"
+import { getUser } from "../services/userService.js";
 
 export default function Post({
-   
+   match
 }) {
 
+    const [error, setError] = useState(null);
+    const [post, setPost] = useState(null);
+    const [author, setAuthor] = useState(null);
+
+    useEffect(() => {
+        async function getData() {
+            try {
+                let postResult = await getPost(match.params.postId);
+                
+                setPost(postResult.data());
+                let authorResult = await getUser(postResult.data().creatorId);
+                setAuthor(authorResult.data());
+            } catch (error) {
+                setError(error);
+                console.log(error);
+            }
+        }
+        getData();
+    }, [])
     
-
+  
+   
+    let properDate = new Date(post?.date.seconds*1000).toLocaleDateString();
+   
     return (
-        <div class="mt-10">
+        <div className="mt-10">
 
-            <div class="mb-4 h-96 md:mb-0 w-full max-w-screen-md mx-auto relative " >
-                <div class="img-class absolute left-0 bottom-0 w-full h-full z-10"></div>
-                <img src="https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80" class="absolute left-0 top-0 w-full h-full z-0 object-cover" />
-                <div class="p-4 absolute bottom-0 left-0 z-20">
+            <div className="mb-4 h-96 md:mb-0 w-full max-w-screen-md mx-auto relative " >
+                <div className="img-className absolute left-0 bottom-0 w-full h-full z-10"></div>
+                <img src={post?.image} className="absolute left-0 top-0 w-full h-full z-0 object-cover" />
+                <div className="p-4 absolute bottom-0 left-0 z-20">
                     <a href="#"
-                        class="px-4 py-1 bg-black text-gray-200 inline-flex items-center justify-center mb-2">Nutrition</a>
-                    <h2 class="text-4xl font-semibold text-gray-100 leading-tight">
-                        Pellentesque a consectetur velit, ac molestie ipsum. Donec sodales, massa et auctor.
-                    </h2>
-                    <div class="flex mt-3">
-                        <img src="https://randomuser.me/api/portraits/men/97.jpg"
-                            class="h-10 w-10 rounded-full mr-2 object-cover" />
+                        className="px-4 py-1 bg-black text-gray-200 inline-flex items-center justify-center mb-2">Nutrition</a>
+                    <h2 className="text-4xl font-semibold text-gray-100 leading-tight">
+                       {post?.title}
+                       </h2>
+                    <div className="flex mt-3">
+                        <img src={author?.image}
+                            className="h-10 w-10 rounded-full mr-2 object-cover" />
                         <div>
-                            <p class="font-semibold text-gray-200 text-sm"> Mike Sullivan </p>
-                            <p class="font-semibold text-gray-400 text-xs"> 14 Aug </p>
+                            <p className="font-semibold text-gray-200 text-sm"> {`${author?.firstname} ${author?.lastname}`} </p>
+                            <p className="font-semibold text-gray-400 text-xs"> {properDate} </p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="px-4 lg:px-0 mt-12 text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed">
-                <p class="pb-6">
-
+            <div className="px-4 lg:px-0 mt-12 text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed">
+                <p className="pb-6">
+                    {post?.content}
                 </p>
 
             </div>
