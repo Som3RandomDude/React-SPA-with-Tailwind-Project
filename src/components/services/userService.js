@@ -17,10 +17,14 @@ export const getUser = (id) => {
     return getDoc(doc(db, 'users', id));
 }
 
-export const updateUser = (id, data) => {
-    return updateDoc((doc(db, 'users', id)), {
-        ...data
-    })
+export const updateUserPosts = (id, data) => {
+    const userRef = doc(db, 'users', id);
+
+
+    return updateDoc(userRef, {
+        posts: arrayUnion(data)
+    });
+
 }
 
 
