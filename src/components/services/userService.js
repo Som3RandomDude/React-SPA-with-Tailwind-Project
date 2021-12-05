@@ -28,5 +28,6 @@ export const addUserPost = (id, postId) => {
     return updateDoc((doc(db, 'users', id)), {
 
         posts: arrayUnion(`testArray`)
+
     });
 }
