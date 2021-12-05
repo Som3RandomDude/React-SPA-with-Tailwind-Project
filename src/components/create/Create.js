@@ -45,7 +45,7 @@ export default function Create({
                     <textarea className="description bg-gray-100 sec p-3 h-60 border border-gray-3  00 outline-none" spellCheck="false" placeholder="Type in your content..." name="content"></textarea>
 
 
-                    <div className="upload flex text-gray-500 m-2">
+                    <div className="upload flex text-gray-500 m-1 ">
                         <input type="file"
                             id="upload" name="upload"
                             accept="image/png, image/jpeg" />

@@ -27,7 +27,7 @@ export function TopAuthors() {
             <div className="flex flex-col max-w-sm px-6 py-4 mx-auto bg-white rounded-lg shadow-md">
                 <ul className="-mx-4">
                     {authors?.map(author =>
-                        <Author key={author.authorID} author={author} />
+                        <Author key={author.authorId} author={author} />
                     )}
                 </ul>
             </div>
