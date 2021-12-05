@@ -37,8 +37,8 @@ export const getAllPosts = async () => {
     return getDocs(collection(db, "posts"));
 }
 
-export const getLatestPosts = (id, numberOfPosts) => {
-    const queryOptions = query(collection(db, 'posts'), orderBy('date', 'asc'), limit(numberOfPosts));
+export const getLatestPosts = (numberOfPosts) => {
+    const queryOptions = query(collection(db, 'posts'), orderBy('date', 'desc'), limit(numberOfPosts));
     return getDocs(queryOptions);
 }
 

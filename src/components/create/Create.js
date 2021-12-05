@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { AuthContext } from '../contexts/authContext.js';
 import { uploadFile } from '../services/fileService.js';
-import { createPost } from '../services/postsService.js';
+import { createPost,getPost } from '../services/postsService.js';
 import './Create.css';
 
 export default function Create({
@@ -21,6 +21,7 @@ export default function Create({
         try {
             let uploadResult = await uploadFile('posts', upload);
             let result = await createPost(title, description, content, uploadResult, id);
+            console.log(result);
             history.push('/');
 
         } catch (error) {

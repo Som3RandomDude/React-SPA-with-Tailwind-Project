@@ -14,7 +14,6 @@ export default function Post({
         async function getData() {
             try {
                 let postResult = await getPost(match.params.postId);
-                
                 setPost(postResult.data());
                 let authorResult = await getUser(postResult.data().creatorId);
                 setAuthor(authorResult.data());
@@ -24,7 +23,7 @@ export default function Post({
             }
         }
         getData();
-    }, [])
+    }, [match.params.postId])
     
   
    
@@ -43,7 +42,7 @@ export default function Post({
                        {post?.title}
                        </h2>
                     <div className="flex mt-3">
-                        <img src={author?.image}
+                        <img src={author?.image ? author?.image:""} alt="avatar"
                             className="h-10 w-10 rounded-full mr-2 object-cover" />
                         <div>
                             <p className="font-semibold text-gray-200 text-sm"> {`${author?.firstname} ${author?.lastname}`} </p>

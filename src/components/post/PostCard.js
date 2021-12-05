@@ -18,7 +18,7 @@ export const PostCard = (props) => {
             }
         }
         getData();
-    }, [])
+    }, [properties.creatorId])
     
     let properDate = new Date(properties.date.seconds*1000).toLocaleDateString();
     
@@ -29,7 +29,7 @@ export const PostCard = (props) => {
                 <div className="flex items-center justify-between"><span className="font-light text-gray-600">{properDate}</span><Link to={`/post/${properties.postId}`}
                     className="px-2 py-1 font-bold text-gray-100 bg-gray-600 rounded hover:bg-gray-500">Laravel</Link>
                 </div>
-                <div className="mt-2"><Link to="#" className="text-2xl font-bold text-gray-700 hover:underline">{properties.title}</Link>
+                <div className="mt-2"><Link to={`/post/${properties.postId}`} className="text-2xl font-bold text-gray-700 hover:underline">{properties.title}</Link>
                     <p className="mt-2 text-gray-600">
                         {properties.description}
                     </p>

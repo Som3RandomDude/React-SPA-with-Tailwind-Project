@@ -1,28 +1,31 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { PostCard } from "../post/PostCard.js";
-import { getAllPosts, getPost } from "../services/postsService.js";
+import { LatestPost } from "../post/LatestPost.js";
+import { getAllPosts, getPost, getLatestPosts } from "../services/postsService.js";
 
 export default function Home() {
 
   const [posts, setPosts] = useState(null);
   const [error, setError] = useState(null);
-  
+  const [latest, setLatest] = useState(null);
   useEffect(() => {
     async function getData() {
       try {
-        let postsSnapshot = await getAllPosts();
-      setPosts(postsSnapshot.docs.map(doc => ({ ...doc.data(), postId: doc.id })));
+        let postsSnapshot = await getLatestPosts(10);
+        let lasterSnapshot = await getLatestPosts(1);
 
+        setPosts(postsSnapshot.docs.map(doc => ({ ...doc.data(), postId: doc.id })));
+        setLatest(lasterSnapshot.docs.map(doc => ({ ...doc.data(), postId: doc.id })));
       } catch (error) {
         setError(error)
       }
-      
+
     }
     getData();
   }, [])
 
-  
+ 
 
 
   return (
@@ -42,11 +45,11 @@ export default function Home() {
                   </select>
                 </div>
               </div>
-            
-                {posts?.map(props=>
-                  <PostCard key={props.postId} props={props} />
-                )}
-             
+
+              {posts?.map(props =>
+                <PostCard key={props.postId} props={props} />
+              )}
+
 
 
               <div className="mt-8">
@@ -136,23 +139,13 @@ export default function Home() {
                   </ul>
                 </div>
               </div>
-              <div className="px-8 mt-10">
-                <h1 className="mb-4 text-xl font-bold text-gray-700">Recent Post</h1>
-                <div className="flex flex-col max-w-sm px-8 py-6 mx-auto bg-white rounded-lg shadow-md">
-                  <div className="flex items-center justify-center"><Link to="#"
-                    className="px-2 py-1 text-sm text-green-100 bg-gray-600 rounded hover:bg-gray-500">Laravel</Link>
-                  </div>
-                  <div className="mt-4"><Link to="#" className="text-lg font-medium text-gray-700 hover:underline">Build
-                    Your New Idea with Laravel Freamwork.</Link></div>
-                  <div className="flex items-center justify-between mt-4">
-                    <div className="flex items-center"><img
-                      src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=731&amp;q=80"
-                      alt="avatar" className="object-cover w-8 h-8 rounded-full" /><Link to="#"
-                        className="mx-3 text-sm text-gray-700 hover:underline">Alex John</Link></div><span
-                          className="text-sm font-light text-gray-600">Jun 1, 2020</span>
-                  </div>
-                </div>
-              </div>
+
+              {latest?.map(props =>
+                <LatestPost key={props.postId} props={props} />
+              )}
+   
+           
+
             </div>
           </div>
         </div>
