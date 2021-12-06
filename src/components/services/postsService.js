@@ -3,10 +3,11 @@ import { collection, query, where, arrayUnion, addDoc, setDoc, deleteDoc, getDoc
 
 
 
-export const createPost = (title, description, content, image, creatorId) => {
+export const createPost = (title, description,category, content, image, creatorId) => {
     return addDoc(collection(db, 'posts'), {
         title,
         description,
+        category,
         content,
         image,
         creatorId,
@@ -17,10 +18,11 @@ export const createPost = (title, description, content, image, creatorId) => {
 
 }
 
-export const updatePost = (title, description, content, id) => {
+export const updatePost = (title, description,category, content, id) => {
     return updateDoc(doc(db, 'posts', id), {
         title,
         description,
+        category,
         content,
         date: serverTimestamp(),
 

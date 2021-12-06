@@ -42,7 +42,7 @@ export default function Home() {
                 <div>
                   <select className="w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                     <option>Latest</option>
-                    <option>Last Week</option>
+                    <option>Oldest</option>
                   </select>
                 </div>
               </div>
@@ -86,7 +86,7 @@ export default function Home() {
                 <div className="flex flex-col max-w-sm px-4 py-6 mx-auto bg-white rounded-lg shadow-md">
                   <ul>
                     <li><Link to="#" className="mx-1 font-bold text-gray-700 hover:text-gray-600 hover:underline">-
-                      AWS</Link></li>
+                    NodeJs</Link></li>
                     <li className="mt-2"><Link to="#"
                       className="mx-1 font-bold text-gray-700 hover:text-gray-600 hover:underline">-
                       Laravel</Link></li>
@@ -98,9 +98,9 @@ export default function Home() {
                       Design</Link></li>
                     <li className="flex items-center mt-2"><Link to="#"
                       className="mx-1 font-bold text-gray-700 hover:text-gray-600 hover:underline">-
-                      Django</Link></li>
+                      Angular</Link></li>
                     <li className="flex items-center mt-2"><Link to="#"
-                      className="mx-1 font-bold text-gray-700 hover:text-gray-600 hover:underline">- PHP</Link>
+                      className="mx-1 font-bold text-gray-700 hover:text-gray-600 hover:underline">- React</Link>
                     </li>
                   </ul>
                 </div>
