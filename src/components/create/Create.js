@@ -43,8 +43,8 @@ export default function Create({
 
                 <div className="editor mx-auto w-10/12 flex flex-col bg-white text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
 
-                    <input className="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" spellCheck="false" placeholder="Title" type="text" name="title" />
-                    <input className="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" spellCheck="false" placeholder="Description" type="text" name="description" />
+                    <input className="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" spellCheck="false" required placeholder="Title" type="text" name="title" />
+                    <input className="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" spellCheck="false" required placeholder="Description" type="text" name="description" />
                     <select name="category" className="bg-gray-100 border border-gray-300 p-2 mb-4 outline-none">
                         <option>NodeJs</option>
                         <option>Laravel</option>
@@ -53,13 +53,13 @@ export default function Create({
                         <option>React</option>
                         <option>Vue</option>
                     </select>
-                    <textarea className="description bg-gray-100 sec p-3 h-60 border border-gray-3  00 outline-none" spellCheck="false" placeholder="Type in your content..." name="content"></textarea>
+                    <textarea className="description bg-gray-100 sec p-3 h-60 border border-gray-3  00 outline-none" required spellCheck="false" placeholder="Type in your content..." name="content"></textarea>
 
 
                     <div className="upload flex text-gray-500 mt-2 ">
                         <input type="file"
                             id="upload" name="upload"
-                            accept="image/png, image/jpeg" />
+                            accept="image/png, image/jpeg" required/>
 
                     </div>
 
