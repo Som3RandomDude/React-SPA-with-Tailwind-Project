@@ -27,7 +27,7 @@ export const LatestPost = (props) => {
         <div className="px-8 mt-10">
             <h1 className="mb-4 text-xl font-bold text-gray-700">Recent Post</h1>
             <div className="flex flex-col max-w-sm px-8 py-6 mx-auto bg-white rounded-lg shadow-md">
-                <div className="flex items-center justify-center"><Link to={`/post/${properties?.postId}`}
+                <div className="flex items-center justify-ledt"><Link to={`/post/${properties?.postId}`}
                     className="px-2 py-1 text-sm text-green-100 bg-gray-600 rounded hover:bg-gray-500">{properties.category}</Link>
                 </div>
                 <div className="mt-4"><Link to={`/post/${properties?.postId}`} className="text-lg font-medium text-gray-700 hover:underline">
