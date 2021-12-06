@@ -14,6 +14,7 @@ import { useEffect, useState } from 'react';
 import { AuthContext } from './components/contexts/authContext.js';
 import { auth } from "./components/utils/firebase.js";
 import PostTest from "./components/post/PostTest.js";
+import UserPosts from "./components/post/UserPosts.js";
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
           <Route path="/register" component={Register} />
           <Route path="/create" component={Create} />
           <Route path={`/profile/:userId`} component={Profile} />
+          <Route path={`/posts/:userId`} component={UserPosts} />
           <Route path="/post/:postId" component={PostTest} />
           <Route path="/logout" component={() => {
             auth.signOut();

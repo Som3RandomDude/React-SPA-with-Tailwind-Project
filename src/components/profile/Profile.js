@@ -97,7 +97,7 @@ export default function Profile({
 
                                             </div>
                                         </div>
-                                        <Link to="">
+                                        <Link to={`/posts/${match.params.userId}`}>
                                         <button
                                             className="block w-full 
                                             text-blue-800 text-sm font-semibold rounded-lg 
