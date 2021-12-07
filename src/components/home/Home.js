@@ -53,7 +53,7 @@ export default function Home() {
        
 
               <div className="mt-8">
-                <div className="flex">
+                <div className="flex justify-center">
                   <Link to="#" className="px-3 py-2 mx-1 font-medium text-gray-500 bg-white rounded-md cursor-not-allowed">
                     previous
                   </Link>
