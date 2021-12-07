@@ -25,7 +25,6 @@ export default function Create({
             let uploadResult = await uploadFile('posts', upload);
             let result = await createPost(title, description, category, content, uploadResult, id);
             let test = await createUserPost(id, result.id);
-            console.log(result.id);
             console.log(test);
             history.push('/');
 

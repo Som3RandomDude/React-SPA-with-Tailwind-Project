@@ -38,6 +38,16 @@ export const createUserPost = (id, data) => {
     });
 
 }
+
+export const updateUserPhoto = (id, image) => {
+    const userRef = doc(db, 'users', id);
+
+
+    return updateDoc(userRef, {
+        image
+    });
+
+}
 export const deleteUserPost = (id, data) => {
     const userRef = doc(db, 'users', id);
 

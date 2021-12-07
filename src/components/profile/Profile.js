@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getUser } from '../services/userService.js';
+import { SuccessMessage } from '../messages/SuccessMessage.js';
+import { uploadFile } from '../services/fileService.js';
+import { getUser, updateUserPhoto } from '../services/userService.js';
 import './Profile.css';
 export default function Profile({
     match
@@ -21,30 +23,51 @@ export default function Profile({
             }
         }
         getData();
-    }, [match.params.userId])
-    let properDate = new Date(author?.date.seconds*1000).toLocaleDateString();
+    }, [match.params.userId,error])
+    let properDate = new Date(author?.date.seconds * 1000).toLocaleDateString();
+
+    async function changePhoto(e) {
+        try {
+            let picture = e.target.files[0];
+            let uploadResult = await uploadFile('users', picture);
+            let test = await updateUserPhoto(match.params.userId, uploadResult);
+            setError("Image successfully changed!")
+
+        } catch (error) {
+            setError(error);
+            console.log(error);
+        }
+    }
 
     return (
         <>
+         {error && <SuccessMessage />} 
+
             <div className="bg-gray-100">
                 <div className="w-full text-white bg-main-color">
                     <div className="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
-
-
-
+                      
                         <div className="container mx-auto my-5 p-5">
                             <div className="md:flex no-wrap md:-mx-2 ">
 
                                 <div className="w-full md:w-3/12 md:mx-2">
                                     {/* <!-- Profile Card --> */}
+                                    
                                     <div className="bg-white p-3 border-t-4 border-gray-600">
                                         <div className="image overflow-hidden">
                                             <img className="h-auto w-full mx-auto"
                                                 src={author?.image}
                                                 alt="" />
                                         </div>
-                                        <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">{author?.firstname} {author?.lastname}</h1>
-
+                                        <div className="flex justify-center">
+                                            <label className="btn border border-gray-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 mt-2 rounded bg-gray-500">
+                                                <input type="file" className="hidden" onChange={changePhoto} />
+                                                Upload Photo
+                                            </label>
+                                        </div>
+                                        <div className="flex justify-center">
+                                            <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">{author?.firstname} {author?.lastname}</h1>
+                                        </div>
                                         <ul
                                             className="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
 
@@ -64,7 +87,7 @@ export default function Profile({
                                 <!-- About Section --> */}
                                     <div className="bg-white p-3 shadow-sm rounded-sm">
                                         <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
-                                            <span clas="text-green-500">
+                                            <span className="text-gray-500">
                                                 <svg className="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                     stroke="currentColor">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
@@ -98,8 +121,8 @@ export default function Profile({
                                             </div>
                                         </div>
                                         <Link to={`/posts/${match.params.userId}`}>
-                                        <button
-                                            className="block w-full 
+                                            <button
+                                                className="block w-full 
                                             text-blue-800 text-sm font-semibold rounded-lg 
                                             hover:bg-gray-100 
                                             focus:outline-none 
@@ -109,8 +132,8 @@ export default function Profile({
                                             p-3 
                                             my-4
                                             ">
-                                            Show Posts
-                                        </button>
+                                                Show Posts
+                                            </button>
                                         </Link>
                                     </div>
                                     {/* <!-- End of about section --> */}
