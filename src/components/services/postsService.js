@@ -1,9 +1,9 @@
 import { db } from "../utils/firebase.js";
-import { collection, query, where, arrayUnion, addDoc, setDoc, deleteDoc, getDoc, getDocs, updateDoc, serverTimestamp, doc, limit, orderBy } from "@firebase/firestore";
+import { collection, query, where, arrayUnion, arrayRemove, addDoc, setDoc, increment, deleteDoc, getDoc, getDocs, updateDoc, serverTimestamp, doc, limit, orderBy } from "@firebase/firestore";
 
 
 
-export const createPost = (title, description,category, content, image, creatorId) => {
+export const createPost = (title, description, category, content, image, creatorId) => {
     return addDoc(collection(db, 'posts'), {
         title,
         description,
@@ -12,23 +12,52 @@ export const createPost = (title, description,category, content, image, creatorI
         image,
         creatorId,
         date: serverTimestamp(),
-        likes: []
+        likes: [],
+        likesCount: 0
     });
 
 
 }
 
-export const updatePost = (title, description,category, content, id) => {
+export const updatePost = (title, description, category, content, image, id) => {
     return updateDoc(doc(db, 'posts', id), {
         title,
         description,
         category,
         content,
-        date: serverTimestamp(),
+        image,
 
     });
 
 
+}
+
+export const likePost = (id, data) => {
+    const postRef = doc(db, 'posts', id);
+
+
+    return updateDoc(postRef, {
+        likes: arrayUnion(data),
+        dislikes: arrayRemove(data),
+        likesCount: increment(1)
+    });
+
+}
+export const dislikePost = (id, data) => {
+    const postRef = doc(db, 'posts', id);
+
+
+    return updateDoc(postRef, {
+        likes: arrayRemove(data),
+        dislikes: arrayUnion(data),
+        likesCount: increment(-1)
+    });
+
+}
+
+export const containsUser = (postId, userId) => {
+    const queryOptions = query(doc(db, 'posts', postId), where("likes", "array-contains", userId));
+    return getDoc(queryOptions);
 }
 
 
