@@ -47,9 +47,10 @@ export default function PostTest({
     await dislikePost(post, id);
     setLiked(null);
   }
-  async function deletePostHandler(id) {
-    await deletePost(id);
-    history.pushState('/')
+  async function deletePostHandler() {
+    let post = match.params.postId;
+    await deletePost(post);
+    history.push('/')
   }
   console.log(hasLiked);
   const userControls = () => {
