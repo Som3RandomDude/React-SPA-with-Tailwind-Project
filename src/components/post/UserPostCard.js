@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { useState } from "react/cjs/react.development";
 import { getPost } from "../services/postsService.js";
 
@@ -17,6 +18,8 @@ export const UserPostCard = (props) => {
             } catch (error) {
                 setError(error);
                 console.log(error);
+                toast.error("An error occured try again later!");
+
             }
         }
         getData();

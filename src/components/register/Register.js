@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import { register } from "../services/authService.js";
 import { storeUser } from "../services/userService.js";
@@ -29,6 +30,7 @@ export default function Register({
 
 
     if (password !== repeatPassword) {
+      toast.warn("Passwords don't match");
       return setError("Passwords don't match");
     }
 
@@ -38,12 +40,13 @@ export default function Register({
       let result = await register(email, password);
      
       let store = await storeUser(firstName, lastName, email, result.user.uid);
-     
+      toast.success("Successfully created an Account");
       history.push('/');
 
     } catch (error) {
       console.log(error);
       setError('Failed to create Account');
+      toast.error('Failed to create an Account')
     }
 
   }

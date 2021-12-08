@@ -1,14 +1,19 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { SuccessMessage } from '../messages/SuccessMessage.js';
+import { toast } from 'react-toastify';
+
+
 import { uploadFile } from '../services/fileService.js';
 import { getUser, updateUserPhoto } from '../services/userService.js';
 import './Profile.css';
+
 export default function Profile({
     match
 }) {
 
     const [error, setError] = useState(null);
+    const [message, setMessage] = useState(false);
+
     const [author, setAuthor] = useState(null);
 
     useEffect(() => {
@@ -19,29 +24,36 @@ export default function Profile({
                 setAuthor(userResult.data());
             } catch (error) {
                 setError(error);
+                toast.error("An error occured try again later!");
                 console.log(error);
             }
         }
         getData();
-    }, [match.params.userId,error])
+    }, [match.params.userId,error,message])
     let properDate = new Date(author?.date.seconds * 1000).toLocaleDateString();
 
     async function changePhoto(e) {
         try {
             let picture = e.target.files[0];
+            console.log(picture);
             let uploadResult = await uploadFile('users', picture);
             let test = await updateUserPhoto(match.params.userId, uploadResult);
-            setError("Image successfully changed!")
+            setMessage(true);
+            toast.success("Image successfully changed!");
+            setTimeout(() => {
+                setMessage(false);
+            }, 2000);
 
         } catch (error) {
             setError(error);
+            toast.error("An error occured try again later!");
             console.log(error);
         }
     }
 
     return (
         <>
-         {error && <SuccessMessage />} 
+     
 
             <div className="bg-gray-100">
                 <div className="w-full text-white bg-main-color">
@@ -61,7 +73,7 @@ export default function Profile({
                                         </div>
                                         <div className="flex justify-center">
                                             <label className="btn border border-gray-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 mt-2 rounded bg-gray-500">
-                                                <input type="file" className="hidden" onChange={changePhoto} />
+                                                <input type="file" accept="image/png, image/jpeg" className="hidden" onChange={changePhoto} />
                                                 Upload Photo
                                             </label>
                                         </div>

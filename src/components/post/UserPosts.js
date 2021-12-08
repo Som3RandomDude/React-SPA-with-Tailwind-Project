@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { toast } from "react-toastify";
 import { getPost } from "../services/postsService.js"
 import { getUser } from "../services/userService.js";
 import { UserPostCard } from "./UserPostCard.js";
@@ -21,6 +22,8 @@ export default function UserPosts({
             } catch (error) {
                 setError(error);
                 console.log(error);
+                toast.error("An error occured try again later!");
+
             }
         }
         getData();

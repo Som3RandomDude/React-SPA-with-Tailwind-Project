@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { login } from "../services/authService.js";
 
 
@@ -14,17 +15,16 @@ export default function Login({
         let email = formData.get('email');
         let password = formData.get('password');
 
-        if (password === '') {
-            return setError("Please fill out the fields");
-        }
+       
         try {
             setError('');
             await login(email, password);
-
+            toast.success('Welcome back!');
             history.push('/');
         } catch (error) {
             console.log(error);
             setError('Failed to log in');
+            toast.error("'Failed to log in");
         }
 
     }

@@ -9,12 +9,15 @@ import Login from "./components/login/Login.js";
 import Create from "./components/create/Create.js";
 import Profile from "./components/profile/Profile.js";
 import Post from "./components/post/Post.js";
+import PostTest from "./components/post/PostTest.js";
 
 import { useEffect, useState } from 'react';
 import { AuthContext } from './components/contexts/authContext.js';
 import { auth } from "./components/utils/firebase.js";
-import PostTest from "./components/post/PostTest.js";
 import UserPosts from "./components/post/UserPosts.js";
+
+
+
 
 
 function App() {
@@ -35,6 +38,7 @@ function App() {
     <AuthContext.Provider value={authInfo}>
       <>
         <Header />
+       
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
@@ -52,7 +56,7 @@ function App() {
 
         <Footer />
       </>
-     
+
     </AuthContext.Provider>
   );
 }

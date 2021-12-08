@@ -1,5 +1,8 @@
 import { useContext, useState } from 'react';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../contexts/authContext.js';
+import { Loading } from '../loading/Loading.js';
+
 import { uploadFile } from '../services/fileService.js';
 import { createPost } from '../services/postsService.js';
 import { createUserPost } from '../services/userService.js';
@@ -10,6 +13,7 @@ export default function Create({
 }) {
     const { id } = useContext(AuthContext);
     const [error, setError] = useState('');
+    const [message, setMessage] = useState('');
 
     async function createPostHandler(e) {
         e.preventDefault();
@@ -20,12 +24,22 @@ export default function Create({
         let upload = formData.get('upload');
         let category = formData.get('category');
 
-       
+
         try {
             let uploadResult = await uploadFile('posts', upload);
             let result = await createPost(title, description, category, content, uploadResult, id);
             let test = await createUserPost(id, result.id);
-            console.log(test);
+
+            toast.success('Sucessfully created a Post!', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+
             history.push('/');
 
         } catch (error) {
@@ -36,7 +50,9 @@ export default function Create({
 
 
     return (
+
         <>
+            
             <div className="heading text-center font-bold text-2xl m-5 text-gray-800">New Post</div>
             <form action="#" method="POST" onSubmit={createPostHandler} className="formDiv">
 
@@ -58,7 +74,7 @@ export default function Create({
                     <div className="upload flex text-gray-500 mt-2 ">
                         <input type="file"
                             id="upload" name="upload"
-                            accept="image/png, image/jpeg" required/>
+                            accept="image/png, image/jpeg" required />
 
                     </div>
 
@@ -69,6 +85,7 @@ export default function Create({
                     </div>
                 </div>
             </form>
+
         </>
     )
 }

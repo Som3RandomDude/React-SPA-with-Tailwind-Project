@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { toast } from "react-toastify";
 import { getTopUsers } from "../../services/userService.js"
 import { Author } from "./Author.js";
 
@@ -10,11 +11,11 @@ export function TopAuthors() {
             try {
                 let authorsSnapshot = await getTopUsers(5);
 
-
                 setAuthors(authorsSnapshot.docs.map(doc => ({ ...doc.data(), authorId: doc.id })));
 
             } catch (error) {
                 setError(error)
+                toast.error("An error occured try again later!");
             }
 
         }
