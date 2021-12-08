@@ -7,16 +7,16 @@ import { Link } from "react-router-dom";
 import './test.css';
 
 export default function PostTest({
-  match,history
+  match, history
 }) {
   const { id } = useContext(AuthContext);
   const [error, setError] = useState(null);
   const [post, setPost] = useState(null);
   const [author, setAuthor] = useState(null);
-  const [hasLiked, setLiked] = useState(null);
+  const [hasLiked, setLiked] = useState(false);
   const [isAuthor, setisAuthor] = useState(null);
 
- 
+
   useEffect(() => {
     async function getData() {
       try {
@@ -51,18 +51,18 @@ export default function PostTest({
     await deletePost(id);
     history.pushState('/')
   }
-  console.log(isAuthor);
-  const userControls = (hasLiked) => {
-    {
+  console.log(hasLiked);
+  const userControls = () => {
+    return (
       hasLiked
         ? <button className="btn border border-gray-500   p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-red-500 hover:bg-red-300" onClick={dislikepostHandler}>Unlike</button>
         : <button className="btn border border-gray-500   p-1 px-4  font-semibold cursor-pointer text-gray-200 ml-2 bg-green-500 hover:bg-green-300" onClick={likepostHandler}>Like</button>
-    }
+    )
   }
   const authorControls = () => {
     return (
       <>
-      <Link to={`/edit/${match.params.postId}`}>  <button className="btn border border-gray-500   p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-red-500 hover:bg-red-300" >Edit</button></Link>
+        <Link to={`/edit/${match.params.postId}`}>  <button className="btn border border-gray-500   p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-red-500 hover:bg-red-300" >Edit</button></Link>
         <button className="btn border border-gray-500   p-1 px-4  font-semibold cursor-pointer text-gray-200 ml-2 bg-green-500 hover:bg-green-300" onClick={deletePostHandler}>Delete</button>
       </>
     )
@@ -94,7 +94,7 @@ export default function PostTest({
 
             {isAuthor
               ? authorControls(id)
-              : userControls
+              : userControls()
             }
 
 
