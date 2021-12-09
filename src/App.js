@@ -9,12 +9,13 @@ import Login from "./components/login/Login.js";
 import Create from "./components/create/Create.js";
 import Profile from "./components/profile/Profile.js";
 import Post from "./components/post/Post.js";
-import PostTest from "./components/post/PostTest.js";
+
 
 import { useEffect, useState } from 'react';
 import { AuthContext } from './components/contexts/authContext.js';
 import { auth } from "./components/utils/firebase.js";
 import UserPosts from "./components/post/UserPosts.js";
+import Edit from "./components/edit/Edit.js";
 
 
 
@@ -38,7 +39,7 @@ function App() {
     <AuthContext.Provider value={authInfo}>
       <>
         <Header />
-       
+
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
@@ -46,7 +47,9 @@ function App() {
           <Route path="/create" component={Create} />
           <Route path={`/profile/:userId`} component={Profile} />
           <Route path={`/posts/:userId`} component={UserPosts} />
-          <Route path="/post/:postId" component={PostTest} />
+
+          <Route path="/post/:postId" component={Post} />
+          <Route path="/edit/:postId" component={Edit} />
           <Route path="/logout" component={() => {
             auth.signOut();
             return <Redirect to="/" />

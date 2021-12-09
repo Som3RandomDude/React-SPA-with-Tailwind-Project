@@ -1,63 +1,114 @@
-import { useEffect, useState } from "react"
-import { getPost } from "../services/postsService.js"
+import { useContext, useEffect, useState } from "react"
+import { toast } from "react-toastify";
+import { AuthContext } from "../contexts/authContext.js";
+import { deletePost, dislikePost, getPost, likePost } from "../services/postsService.js"
 import { getUser } from "../services/userService.js";
+import { Link } from "react-router-dom";
+import './Post.css';
 
 export default function Post({
-   match
+  match, history
 }) {
-
-    const [error, setError] = useState(null);
-    const [post, setPost] = useState(null);
-    const [author, setAuthor] = useState(null);
-
-    useEffect(() => {
-        async function getData() {
-            try {
-                let postResult = await getPost(match.params.postId);
-                setPost(postResult.data());
-                let authorResult = await getUser(postResult.data().creatorId);
-                setAuthor(authorResult.data());
-            } catch (error) {
-                setError(error);
-                console.log(error);
-            }
-        }
-        getData();
-    }, [match.params.postId])
-    
   
-   
-    let properDate = new Date(post?.date.seconds*1000).toLocaleDateString();
-   
+  const { id } = useContext(AuthContext);
+  const [error, setError] = useState(null);
+  const [post, setPost] = useState(null);
+  const [author, setAuthor] = useState(null);
+  const [hasLiked, setLiked] = useState(false);
+  const [isAuthor, setisAuthor] = useState(null);
+
+
+  useEffect(() => {
+    async function getData() {
+      try {
+        let postResult = await getPost(match.params.postId);
+        setPost(postResult.data());
+        let authorResult = await getUser(postResult.data().creatorId);
+        setAuthor(authorResult.data());
+        if (postResult.data().creatorId === id) {
+          setisAuthor(true);
+        }
+      } catch (error) {
+        setError(error);
+        console.log(error);
+        toast.error("An error occured try again later!");
+
+      }
+    }
+    getData();
+  }, [match.params.postId, hasLiked,id])
+
+  async function likepostHandler(e) {
+    let post = match.params.postId;
+    await likePost(post, id);
+    setLiked('liked');
+  }
+
+  async function dislikepostHandler(e) {
+    let post = match.params.postId;
+    await dislikePost(post, id);
+    setLiked(null);
+  }
+
+  async function deletePostHandler() {
+    let post = match.params.postId;
+    await deletePost(post);
+    history.push('/')
+  }
+
+  console.log(hasLiked);
+  const userControls = () => {
     return (
-        <div className="mt-10">
-
-            <div className="mb-4 h-96 md:mb-0 w-full max-w-screen-md mx-auto relative " >
-                <div className="img-className absolute left-0 bottom-0 w-full h-full z-10"></div>
-                <img src={post?.image} className="absolute left-0 top-0 w-full h-full z-0 object-cover" />
-                <div className="p-4 absolute bottom-0 left-0 z-20">
-                    <a href="#"
-                        className="px-4 py-1 bg-black text-gray-200 inline-flex items-center justify-center mb-2">{post?.category}</a>
-                    <h2 className="text-4xl font-semibold text-gray-100 leading-tight">
-                       {post?.title}
-                       </h2>
-                    <div className="flex mt-3">
-                        <img src={author?.image ? author?.image:""} alt="avatar"
-                            className="h-10 w-10 rounded-full mr-2 object-cover" />
-                        <div>
-                            <p className="font-semibold text-gray-200 text-sm"> {`${author?.firstname} ${author?.lastname}`} </p>
-                            <p className="font-semibold text-gray-400 text-xs"> {properDate} </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div className="px-4 lg:px-0 mt-12 text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed">
-                <p className="pb-6">
-                    {post?.content}
-                </p>
-
-            </div>
-        </div>
+      hasLiked
+        ? <button className="btn border border-gray-500   p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-red-500 hover:bg-red-300" onClick={dislikepostHandler}>Unlike</button>
+        : <button className="btn border border-gray-500   p-1 px-4  font-semibold cursor-pointer text-gray-200 ml-2 bg-green-500 hover:bg-green-300" onClick={likepostHandler}>Like</button>
     )
+  }
+  const authorControls = () => {
+    return (
+      <>
+        <Link to={`/edit/${match.params.postId}`}>  <button className="btn border border-gray-500   p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-red-500 hover:bg-red-300" >Edit</button></Link>
+        <button className="btn border border-gray-500   p-1 px-4  font-semibold cursor-pointer text-gray-200 ml-2 bg-green-500 hover:bg-green-300" onClick={deletePostHandler}>Delete</button>
+      </>
+    )
+
+  }
+
+  let properDate = new Date(post?.date.seconds * 1000).toLocaleDateString();
+
+  return (
+
+    <div className="relative container mx-auto bg-white px-4">
+      <div className="relative -mx-4 top-0 pt-[17%] overflow-hidden">
+        <img className="absolute inset-0 object-cover object-top w-full h-full filter blur" src={post?.image} alt="" />
+      </div>
+
+      <div className="mt-[-10%] w-1/2 mx-auto">
+        <div className="relative pt-[56.25%] overflow-hidden rounded-2xl">
+          <img className="w-full h-full absolute inset-0 object-cover" src={post?.image} alt="" />
+        </div>
+      </div>
+
+      <article className="max-w-prose mx-auto py-8 ">
+        <div className="flex w-full justify-between">
+          <div className="">
+            <h1 className="text-2xl font-bold">{post?.title}</h1>
+            <h2 className="mt-2 text-sm text-gray-500">{`${author?.firstname} ${author?.lastname}`}, {properDate}</h2>
+          </div>
+          <div className="flex-row justify-evenly">
+
+            {isAuthor
+              ? authorControls(id)
+              : userControls()
+            }
+
+            <h2 className="mt-2 text-sm text-gray-500 flex justify-center">Likes: {post?.likesCount}</h2>
+          </div>
+        </div>
+        <p className="mt-6">
+          {post?.content}
+        </p>
+      </article>
+    </div>
+  )
 }
