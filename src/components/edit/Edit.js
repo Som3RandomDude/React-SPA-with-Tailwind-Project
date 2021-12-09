@@ -16,7 +16,7 @@ export default function Edit({
     const [error, setError] = useState('');
     const [message, setMessage] = useState('');
     const [post, setPost] = useState('');
-   
+
 
     useEffect(() => {
         async function getData() {
@@ -48,11 +48,11 @@ export default function Edit({
 
 
         try {
-           
+
             let uploadResult = await uploadFile('posts', upload);
-            
+
             let result = await updatePost(title, description, category, content, uploadResult, match.params.postId);
-           
+
 
             toast.success('Sucessfully created a Post!', {
                 position: "top-center",
@@ -74,7 +74,7 @@ export default function Edit({
 
     const handleChange = (e) => {
         setPost((post) => ({ ...post, [e.target.name]: e.target.value }));
-      };
+    };
 
     return (
 
@@ -85,9 +85,9 @@ export default function Edit({
 
                 <div className="editor mx-auto w-10/12 flex flex-col bg-white text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
 
-                    <input className="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" spellCheck="false" required placeholder="Title" type="text" name="title" onChange={handleChange} value={post?.title} />
-                    <input className="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" spellCheck="false" required placeholder="Description" type="text" name="description" onChange={handleChange} value={post?.description} />
-                    <select name="category" className="bg-gray-100 border border-gray-300 p-2 mb-4 outline-none "onChange={handleChange} value={post?.category}>
+                    <input className="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" spellCheck="false" required placeholder="Title" type="text" name="title" onChange={handleChange} value={post?.title ? post.title : ""} />
+                    <input className="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" spellCheck="false" required placeholder="Description" type="text" name="description" onChange={handleChange} value={post?.description ? post?.description : ""} />
+                    <select name="category" className="bg-gray-100 border border-gray-300 p-2 mb-4 outline-none " onChange={handleChange} value={post?.category}>
                         <option>NodeJs</option>
                         <option>Laravel</option>
                         <option>Design</option>
@@ -106,7 +106,7 @@ export default function Edit({
 
                             <input type="file" className='hidden'
                                 id="upload" name="upload"
-                                accept="image/png, image/jpeg"  />
+                                accept="image/png, image/jpeg" />
                             Upload Photo
                         </label>
 
