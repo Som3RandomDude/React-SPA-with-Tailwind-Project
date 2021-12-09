@@ -53,7 +53,7 @@ export default function Register({
 
   return (
     <div
-      className="min-h-screen flex flex-col items-center justify-center bg-gray-100"
+      className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-10"
     >
       <div
         className="
@@ -117,6 +117,7 @@ export default function Register({
                   focus:outline-none focus:border-blue-400
                 "
                   placeholder="Enter your First Name"
+                  required
                 />
               </div>
 
@@ -159,6 +160,7 @@ export default function Register({
                   focus:outline-none focus:border-blue-400
                 "
                   placeholder="Enter your Last Name"
+                  required
                 />
               </div>
             </div>
@@ -201,6 +203,7 @@ export default function Register({
                   focus:outline-none focus:border-blue-400
                 "
                   placeholder="Enter your email"
+                  required
                 />
               </div>
             </div>
@@ -245,6 +248,7 @@ export default function Register({
                   focus:outline-none focus:border-blue-400
                 "
                   placeholder="Enter your password"
+                  required
                 />
 
               </div>
@@ -290,6 +294,7 @@ export default function Register({
                   focus:outline-none focus:border-blue-400
                 "
                   placeholder="Repeat your password"
+                  required
                 />
 
               </div>

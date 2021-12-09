@@ -24,7 +24,7 @@ export default function Login({
         } catch (error) {
             console.log(error);
             setError('Failed to log in');
-            toast.error("'Failed to log in");
+            toast.error("Failed to log in");
         }
 
     }
@@ -96,7 +96,8 @@ export default function Login({
                   py-2
                   focus:outline-none focus:border-blue-400
                 "
-                                    placeholder="Enter your email"
+                                    placeholder="Enter your email" 
+                                    required
                                 />
                             </div>
                         </div>
@@ -141,6 +142,7 @@ export default function Login({
                   focus:outline-none focus:border-blue-400
                 "
                                     placeholder="Enter your password"
+                                    required
                                 />
                             </div>
                         </div>
