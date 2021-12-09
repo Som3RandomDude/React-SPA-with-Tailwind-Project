@@ -55,9 +55,10 @@ export const dislikePost = (id, data) => {
 
 }
 
-export const containsUser = (postId, userId) => {
-    const queryOptions = query(doc(db, 'posts', postId), where("likes", "array-contains", userId));
-    return getDoc(queryOptions);
+export const containsUser = (postId, userId, check) => {
+
+    const queryOptions = query(collection(db, 'posts'), where(check, "array-contains", userId));
+    return getDocs(queryOptions);
 }
 
 
@@ -74,7 +75,14 @@ export const getLatestPosts = (numberOfPosts) => {
     const queryOptions = query(collection(db, 'posts'), orderBy('date', 'desc'), limit(numberOfPosts));
     return getDocs(queryOptions);
 }
-
+export const orderPosts = (order) => {
+    const queryOptions = query(collection(db, 'posts'), orderBy('date', order));
+    return getDocs(queryOptions);
+}
+export const orderPostsByCategory = (category) => {
+    const queryOptions = query(collection(db, 'posts'), orderBy(category));
+    return getDocs(queryOptions);
+}
 export const deletePost = (id) => {
     return deleteDoc(doc(db, 'posts', id));
 }

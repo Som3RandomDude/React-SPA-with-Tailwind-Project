@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { toast } from "react-toastify";
 import { AuthContext } from "../contexts/authContext.js";
-import { deletePost, dislikePost, getPost, likePost } from "../services/postsService.js"
+import { containsUser, deletePost, dislikePost, getPost, likePost } from "../services/postsService.js"
 import { getUser } from "../services/userService.js";
 import { Link } from "react-router-dom";
 import './Post.css';
@@ -19,6 +19,7 @@ export default function Post({
 
 
   useEffect(() => {
+
     async function getData() {
       try {
         let postResult = await getPost(match.params.postId);
@@ -28,6 +29,10 @@ export default function Post({
         if (postResult.data().creatorId === id) {
           setisAuthor(true);
         }
+       if(postResult.data().likes.includes(id)){
+          setLiked("liked");
+       }
+       
       } catch (error) {
         setError(error);
         console.log(error);
@@ -39,12 +44,14 @@ export default function Post({
   }, [match.params.postId, hasLiked, id])
 
   async function likepostHandler(e) {
+   
     let post = match.params.postId;
     await likePost(post, id);
     setLiked('liked');
   }
 
   async function dislikepostHandler(e) {
+   
     let post = match.params.postId;
     await dislikePost(post, id);
     setLiked(null);
@@ -56,15 +63,16 @@ export default function Post({
     history.push('/')
   }
 
-
-  const userControls = (hasLiked) => {
-    if (id)
+  console.log(hasLiked);
+  const userControls = () => {
+    if (id) {
       return (
         hasLiked
           ? <button className="btn border border-gray-500   p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-red-500 hover:bg-red-300" onClick={dislikepostHandler}>Unlike</button>
           : <button className="btn border border-gray-500   p-1 px-4  font-semibold cursor-pointer text-gray-200 ml-2 bg-green-500 hover:bg-green-300" onClick={likepostHandler}>Like</button>
 
       )
+    }
   }
 
   const authorControls = () => {

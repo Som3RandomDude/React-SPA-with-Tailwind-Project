@@ -30,19 +30,20 @@ export default function UserPosts({
     }, [match.params.postId])
 
 
-console.log(posts);
+    console.log(posts);
 
 
     return (
 
-        <div class="w-full my-12">
-            <div class="max-w-5xl mx-auto px-6 sm:px-6 lg:px-8">
-                <div class="bg-white w-full shadow rounded p-8">
-                    <h1 class="flex justify-center md:text-3xl text-2xl font-bold text-gray-800">User Posts</h1>
-                    <div class="grid grid-cols-1 gap-8 mt-6">
-                    {posts?.map(post =>
-                        <UserPostCard key={post} id={post}/>
-                    )}
+        <div className="w-full my-12">
+            <div className="max-w-5xl mx-auto px-6 sm:px-6 lg:px-8">
+                <div className="bg-white w-full shadow rounded p-8">
+                    <h1 className="flex justify-center md:text-3xl text-2xl font-bold text-gray-800">User Posts</h1>
+                    <div className="grid grid-cols-1 gap-8 mt-6">
+                        {posts?.length > 0
+                            ? posts?.map(post =><UserPostCard key={post} id={post} />)
+                            : <div className="flex justify-center">No posts yet... </div>
+                            }
                     </div>
                 </div>
             </div>
