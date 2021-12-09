@@ -9,7 +9,7 @@ import './Post.css';
 export default function Post({
   match, history
 }) {
-  
+
   const { id } = useContext(AuthContext);
   const [error, setError] = useState(null);
   const [post, setPost] = useState(null);
@@ -36,7 +36,7 @@ export default function Post({
       }
     }
     getData();
-  }, [match.params.postId, hasLiked,id])
+  }, [match.params.postId, hasLiked, id])
 
   async function likepostHandler(e) {
     let post = match.params.postId;
@@ -56,14 +56,17 @@ export default function Post({
     history.push('/')
   }
 
-  console.log(hasLiked);
-  const userControls = () => {
-    return (
-      hasLiked
-        ? <button className="btn border border-gray-500   p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-red-500 hover:bg-red-300" onClick={dislikepostHandler}>Unlike</button>
-        : <button className="btn border border-gray-500   p-1 px-4  font-semibold cursor-pointer text-gray-200 ml-2 bg-green-500 hover:bg-green-300" onClick={likepostHandler}>Like</button>
-    )
+
+  const userControls = (hasLiked) => {
+    if (id)
+      return (
+        hasLiked
+          ? <button className="btn border border-gray-500   p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-red-500 hover:bg-red-300" onClick={dislikepostHandler}>Unlike</button>
+          : <button className="btn border border-gray-500   p-1 px-4  font-semibold cursor-pointer text-gray-200 ml-2 bg-green-500 hover:bg-green-300" onClick={likepostHandler}>Like</button>
+
+      )
   }
+
   const authorControls = () => {
     return (
       <>
@@ -101,6 +104,7 @@ export default function Post({
               ? authorControls(id)
               : userControls()
             }
+
 
             <h2 className="mt-2 text-sm text-gray-500 flex justify-center">Likes: {post?.likesCount}</h2>
           </div>
