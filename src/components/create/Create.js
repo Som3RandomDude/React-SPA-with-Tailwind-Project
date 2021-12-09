@@ -14,6 +14,7 @@ export default function Create({
     const { id } = useContext(AuthContext);
     const [error, setError] = useState('');
     const [message, setMessage] = useState('');
+    const [image, setImage] = useState('');
 
     async function createPostHandler(e) {
         e.preventDefault();
@@ -26,6 +27,13 @@ export default function Create({
 
 
         try {
+          
+            if (!upload.name.match(/\.(jpg|jpeg|png|gif)$/)) {
+                setImage({ invalidImage: 'Please select valid image.' });
+                upload = null;
+                toast.warn('Please select a valid image.')
+                return false;
+              }
             let uploadResult = await uploadFile('posts', upload);
             let result = await createPost(title, description, category, content, uploadResult, id);
             let test = await createUserPost(id, result.id);
@@ -38,7 +46,7 @@ export default function Create({
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
-                });
+            });
 
             history.push('/');
 
@@ -48,11 +56,20 @@ export default function Create({
         }
     }
 
+    const imageChangeHandler = (e) => {
+        let imageFile = e.target.files[0]
+        if (!imageFile.name.match(/\.(jpg|jpeg|png|gif)$/)) {
+            setImage({ invalidImage: 'Please select valid image.' });
+            imageFile = null;
+            toast.warn('Please select a valid image.')
+            return;
+        }
+    }
 
     return (
 
         <>
-            
+
             <div className="heading text-center font-bold text-2xl m-5 text-gray-800">New Post</div>
             <form action="#" method="POST" onSubmit={createPostHandler} className="formDiv">
 
@@ -72,9 +89,13 @@ export default function Create({
 
 
                     <div className="upload flex text-gray-500 mt-2 ">
-                        <input type="file"
-                            id="upload" name="upload"
-                            accept="image/png, image/jpeg" required />
+                        <label className="btn border border-gray-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 mt-2  bg-gray-500">
+
+                            <input type="file" className='hidden'
+                                id="upload" name="upload"
+                                accept="image/png, image/jpeg" onChange={imageChangeHandler} />
+                            Upload Photo
+                        </label>
 
                     </div>
 

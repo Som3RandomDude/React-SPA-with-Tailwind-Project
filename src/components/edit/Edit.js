@@ -16,7 +16,8 @@ export default function Edit({
     const [error, setError] = useState('');
     const [message, setMessage] = useState('');
     const [post, setPost] = useState('');
-    
+    const [image, setImage] = useState('');
+
 
     useEffect(() => {
         async function getData() {
@@ -34,7 +35,7 @@ export default function Edit({
             }
         }
         getData();
-    }, [match.params.postId])
+    }, [match.params.postId, image])
 
 
     async function EditPostHandler(e) {
@@ -48,7 +49,13 @@ export default function Edit({
 
 
         try {
-            console.log(upload.type);
+            if (!upload.name.match(/\.(jpg|jpeg|png|gif)$/)) {
+                setImage({ invalidImage: 'Please select valid image.' });
+                upload = null;
+                toast.warn('Please select a valid image.')
+                return false;
+            }
+
             let uploadResult = post.image;
             if (upload.name !== '') {
                 uploadResult = await uploadFile('posts', upload);
@@ -58,15 +65,7 @@ export default function Edit({
             let result = await updatePost(title, description, category, content, uploadResult, match.params.postId);
 
 
-            toast.success('Sucessfully created a Post!', {
-                position: "top-center",
-                autoClose: 5000,
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
+            toast.success('Sucessfully edited the Post!');
 
             history.push(`/post/${match.params.postId}`);
 
@@ -80,13 +79,14 @@ export default function Edit({
     const handleChange = (e) => {
         setPost((post) => ({ ...post, [e.target.name]: e.target.value }));
     };
-    const imageChangeHandler = (e)=>{
+    const imageChangeHandler = (e) => {
         let imageFile = e.target.files[0]
         if (!imageFile.name.match(/\.(jpg|jpeg|png|gif)$/)) {
-           
+            setImage({ invalidImage: 'Please select valid image.' });
+            imageFile = null;
             toast.warn('Please select a valid image.')
             return false;
-          }
+        }
     }
 
     return (
@@ -114,12 +114,12 @@ export default function Edit({
                     </textarea>
 
 
-                    <div className="upload flex  ">
+                    <div className="upload flex mt-2 ">
                         <label className="btn border border-gray-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 mt-2  bg-gray-500">
 
                             <input type="file" className='hidden'
                                 id="upload" name="upload"
-                                accept="image/png, image/jpeg"  onChange={imageChangeHandler}/>
+                                accept="image/png, image/jpeg" onChange={imageChangeHandler} />
                             Upload Photo
                         </label>
 
