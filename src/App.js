@@ -16,6 +16,7 @@ import { AuthContext } from './components/contexts/authContext.js';
 import { auth } from "./components/utils/firebase.js";
 import UserPosts from "./components/post/UserPosts.js";
 import Edit from "./components/edit/Edit.js";
+import RouteGuard from "./components/routeguard/RouteGuard.js";
 
 
 
@@ -42,14 +43,15 @@ function App() {
 
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
+          <RouteGuard path="/login" component={Login}   auth={!authInfo.isAuthenticated}/>
+          <RouteGuard path="/register" component={Register} auth={!authInfo.isAuthenticated} />
           <Route path="/create" component={Create} />
-          <Route path={`/profile/:userId`} component={Profile} />
-          <Route path={`/posts/:userId`} component={UserPosts} />
+          {/* <Route path={`/profile/:userId`} component={Profile} /> */}
+          <RouteGuard path={`/posts/:userId`} component={UserPosts}  auth={authInfo.isAuthenticated} />
 
           <Route path="/post/:postId" component={Post} />
-          <Route path="/edit/:postId" component={Edit} />
+          <RouteGuard path="/edit/:postId" component={Edit} auth={authInfo.isAuthenticated} />
+          <RouteGuard path={`/profile/:userId`} component={Profile} auth={authInfo.isAuthenticated} />
           <Route path="/logout" component={() => {
             auth.signOut();
             return <Redirect to="/" />
