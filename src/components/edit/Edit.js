@@ -16,6 +16,7 @@ export default function Edit({
     const [error, setError] = useState('');
     const [message, setMessage] = useState('');
     const [post, setPost] = useState('');
+    const [image, setImage] = useState('');
 
 
     useEffect(() => {
@@ -48,8 +49,12 @@ export default function Edit({
 
 
         try {
+            console.log(upload.type);
+            let uploadResult = post.image;
+            if (upload.name !== '') {
+                uploadResult = await uploadFile('posts', upload);
+            }
 
-            let uploadResult = await uploadFile('posts', upload);
 
             let result = await updatePost(title, description, category, content, uploadResult, match.params.postId);
 
@@ -64,17 +69,26 @@ export default function Edit({
                 progress: undefined,
             });
 
-            history.push('/');
+            history.push(`/post/${match.params.postId}`);
 
         } catch (error) {
             setError(error);
             console.log(error);
+            toast.warn('Something went wrong please try again!')
         }
     }
 
     const handleChange = (e) => {
         setPost((post) => ({ ...post, [e.target.name]: e.target.value }));
     };
+    const imageChangeHandler = (e)=>{
+        let imageFile = e.target.files[0]
+        if (!imageFile.name.match(/\.(jpg|jpeg|png|gif)$/)) {
+            setImage({ invalidImage: 'Please select valid image.' });
+            toast.warn('Please select a valid image.')
+            return false;
+          }
+    }
 
     return (
 
@@ -106,14 +120,13 @@ export default function Edit({
 
                             <input type="file" className='hidden'
                                 id="upload" name="upload"
-                                accept="image/png, image/jpeg" />
+                                accept="image/png, image/jpeg"  onChange={imageChangeHandler}/>
                             Upload Photo
                         </label>
 
                     </div>
 
                     <div className="buttons flex justify-end">
-
                         <Link to={`/post/${match.params.postId}`}>   <button className="btn border border-gray-300 p-1 px-4 font-semibold cursor-pointer text-gray-500 ml-auto">Cancel</button></Link>
                         <button className="btn border border-gray-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-gray-500">Post</button>
                     </div>
