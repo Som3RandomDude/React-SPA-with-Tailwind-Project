@@ -34,8 +34,16 @@ export default function Profile({
 
     async function changePhoto(e) {
         try {
+
+            
             let picture = e.target.files[0];
-            console.log(picture);
+          
+            if (!picture.name.match(/\.(jpg|jpeg|png|gif)$/)) {
+               
+                toast.warn('Please select a valid image.')
+                return false;
+              }
+
             let uploadResult = await uploadFile('users', picture);
             let test = await updateUserPhoto(match.params.userId, uploadResult);
             setMessage(true);
