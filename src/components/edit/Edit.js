@@ -16,8 +16,7 @@ export default function Edit({
     const [error, setError] = useState('');
     const [message, setMessage] = useState('');
     const [post, setPost] = useState('');
-    const [image, setImage] = useState('');
-
+    
 
     useEffect(() => {
         async function getData() {
@@ -84,7 +83,7 @@ export default function Edit({
     const imageChangeHandler = (e)=>{
         let imageFile = e.target.files[0]
         if (!imageFile.name.match(/\.(jpg|jpeg|png|gif)$/)) {
-            setImage({ invalidImage: 'Please select valid image.' });
+           
             toast.warn('Please select a valid image.')
             return false;
           }
