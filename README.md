@@ -30,5 +30,81 @@ Deploys the current build from the build folder for hosting
 
 
 # App Architecture
-![Screenshot 2021-12-11 170557](https://user-images.githubusercontent.com/39888185/145681436-140df314-92d5-4ffa-88e8-b5cea4662d6f.png)
-
+```
+.
+│   App.css
+│   App.js
+│   App.test.js
+│   index.css
+│   index.js
+│   reportWebVitals.js
+│
+├───components
+│   ├───404
+│   │       404.css
+│   │       404.js
+│   │
+│   ├───create
+│   │       Create.css
+│   │       Create.js
+│   │
+│   ├───edit
+│   │       Edit.css
+│   │       Edit.js
+│   │
+│   ├───footer
+│   │       Footer.css
+│   │       Footer.js
+│   │
+│   ├───header
+│   │       Header.css
+│   │       Header.js
+│   │
+│   ├───HOC
+│   │       RouteGuard.js
+│   │
+│   ├───home
+│   │   │   Home.css
+│   │   │   Home.js
+│   │   │
+│   │   └───authors
+│   │           Author.js
+│   │           TopAuthors.js
+│   │
+│   ├───loading
+│   │       Loading.css
+│   │       Loading.js
+│   │
+│   ├───login
+│   │       Login.js
+│   │       
+│   ├───post
+│   │       LatestPost.js
+│   │       OldPostPage.js
+│   │       Post.css
+│   │       Post.js
+│   │       PostCard.js
+│   │       UserPostCard.js
+│   │       UserPosts.js
+│   │
+│   ├───profile
+│   │       Profile.css
+│   │       Profile.js
+│   │
+│   └───register
+│           Register.css
+│           Register.js
+│
+├───contexts
+│       authContext.js
+│
+├───services
+│       authService.js
+│       fileService.js
+│       postsService.js
+│       userService.js
+│
+└───utils
+        backup.js
+        firebase.js
+```
