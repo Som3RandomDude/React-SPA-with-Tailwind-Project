@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/authContext.js";
 import { containsUser, deletePost, dislikePost, getPost, likePost } from "../../services/postsService.js"
-import { getUser } from "../../services/userService.js";
+import { deleteUserPost, getUser } from "../../services/userService.js";
 import { Link } from "react-router-dom";
 import './Post.css';
 
@@ -29,10 +29,10 @@ export default function Post({
         if (postResult.data().creatorId === id) {
           setisAuthor(true);
         }
-       if(postResult.data().likes.includes(id)){
+        if (postResult.data().likes.includes(id)) {
           setLiked("liked");
-       }
-       
+        }
+
       } catch (error) {
         setError(error);
         console.log(error);
@@ -44,23 +44,44 @@ export default function Post({
   }, [match.params.postId, hasLiked, id])
 
   async function likepostHandler(e) {
-   
+
     let post = match.params.postId;
-    await likePost(post, id);
-    setLiked('liked');
+    try {
+      await likePost(post, id);
+      setLiked('liked');
+    } catch (error) {
+      setError(error);
+      console.log(error);
+      toast.error("An error occured try again later!");
+    }
+
   }
 
   async function dislikepostHandler(e) {
-   
-    let post = match.params.postId;
-    await dislikePost(post, id);
-    setLiked(null);
+    try {
+      let post = match.params.postId;
+      await dislikePost(post, id);
+      setLiked(null);
+    } catch (error) {
+      setError(error);
+      console.log(error);
+      toast.error("An error occured try again later!");
+    }
+
   }
 
   async function deletePostHandler() {
-    let post = match.params.postId;
-    await deletePost(post);
-    history.push('/')
+    try {
+      let post = match.params.postId;
+      await deletePost(post);
+      await deleteUserPost(id,post);
+      history.push('/');
+    } catch (error) {
+      setError(error);
+      console.log(error);
+      toast.error("An error occured try again later!");
+    }
+
   }
 
   console.log(hasLiked);
