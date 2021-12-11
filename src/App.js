@@ -12,7 +12,7 @@ import Post from "./components/post/Post.js";
 import NotFound from "./components/404/404.js";
 
 import { useEffect, useState } from 'react';
-import { AuthContext } from './components/contexts/authContext.js';
+import { AuthContext } from './contexts/authContext.js';
 import { auth } from "./utils/firebase.js";
 import UserPosts from "./components/post/UserPosts.js";
 import Edit from "./components/edit/Edit.js";

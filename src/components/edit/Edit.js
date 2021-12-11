@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { AuthContext } from '../contexts/authContext.js';
+import { AuthContext } from '../../contexts/authContext.js';
 import { Loading } from '../loading/Loading.js';
 
 import { uploadFile } from '../../services/fileService.js';
