@@ -9,7 +9,7 @@ import Login from "./components/login/Login.js";
 import Create from "./components/create/Create.js";
 import Profile from "./components/profile/Profile.js";
 import Post from "./components/post/Post.js";
-
+import NotFound from "./components/404/404.js";
 
 import { useEffect, useState } from 'react';
 import { AuthContext } from './components/contexts/authContext.js';
@@ -56,6 +56,7 @@ function App() {
             auth.signOut();
             return <Redirect to="/" />
           }} />
+          <Route component={NotFound} />
 
         </Switch>
 

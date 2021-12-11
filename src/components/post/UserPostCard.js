@@ -29,7 +29,7 @@ export const UserPostCard = (props) => {
     return (
         <div className="flex flex-col md:flex-row">
             <div className="w-full md:w-6/12 rounded overflow-hidden">
-                <img className="object w-full h-auto" src={post?.image} alt="" />
+                <img className="object w-full h-80" src={post?.image} alt="" />
             </div>
             <div className="w-full md:w-6/12 mt-4 md:mt-0 md:ml-4">
                 <h2 className="text-lg font-semibold leading-tight text-gray-800">{post?.title}</h2>

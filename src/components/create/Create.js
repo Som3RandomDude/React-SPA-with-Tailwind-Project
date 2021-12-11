@@ -32,7 +32,7 @@ export default function Create({
                 setImage({ invalidImage: 'Please select valid image.' });
                 upload = null;
                 toast.warn('Please select a valid image.')
-                return false;
+                return ;
               }
             let uploadResult = await uploadFile('posts', upload);
             let result = await createPost(title, description, category, content, uploadResult, id);

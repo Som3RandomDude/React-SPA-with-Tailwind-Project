@@ -53,7 +53,7 @@ export default function Edit({
                 setImage({ invalidImage: 'Please select valid image.' });
                 upload = null;
                 toast.warn('Please select a valid image.')
-                
+                return;
             }
 
             let uploadResult = post.image;

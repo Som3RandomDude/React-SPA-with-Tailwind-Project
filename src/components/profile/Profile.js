@@ -102,7 +102,7 @@ export default function Profile({
 
                                 </div>
                                 {/* <!-- Right Side --> */}
-                                <div className="w-full md:w-9/12 mx-2 h-64">
+                                <div className="w-full md:w-9/12  h-64">
                                     {/* <!-- Profile tab -->
                                 <!-- About Section --> */}
                                     <div className="bg-white p-3 shadow-sm rounded-sm">
