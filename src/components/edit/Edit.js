@@ -49,17 +49,20 @@ export default function Edit({
 
 
         try {
-            if (!upload.name.match(/\.(jpg|jpeg|png|gif)$/)) {
-                setImage({ invalidImage: 'Please select valid image.' });
-                upload = null;
-                toast.warn('Please select a valid image.')
-                return;
-            }
 
-            let uploadResult = post.image;
+
+
             if (upload.name !== '') {
                 uploadResult = await uploadFile('posts', upload);
+                if (!upload.name.match(/\.(jpg|jpeg|png|gif)$/)) {
+                    setImage({ invalidImage: 'Please select valid image.' });
+                    upload = null;
+                    toast.warn('Please select a valid image.')
+                    return;
+                }
             }
+            let uploadResult = post.image;
+            console.log(uploadResult);
 
 
             let result = await updatePost(title, description, category, content, uploadResult, match.params.postId);
