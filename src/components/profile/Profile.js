@@ -31,7 +31,7 @@ export default function Profile({
             }
         }
         getData();
-    }, [match.params.userId, error, message])
+    }, [match.params.userId, error, message,id])
     let properDate = new Date(user?.date.seconds * 1000).toLocaleDateString();
 
     async function changePhoto(e) {
