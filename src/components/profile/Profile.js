@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { AuthContext } from '../../contexts/authContext.js';
 
 
 import { uploadFile } from '../../services/fileService.js';
@@ -10,18 +11,19 @@ import './Profile.css';
 export default function Profile({
     match
 }) {
-
+    const { id } = useContext(AuthContext)
     const [error, setError] = useState(null);
     const [message, setMessage] = useState(false);
 
+    const [user, setUser] = useState(null);
     const [author, setAuthor] = useState(null);
 
     useEffect(() => {
         async function getData() {
             try {
-
-                let userResult = await getUser(match.params.userId);
-                setAuthor(userResult.data());
+                
+                let userResult = await getUser(id);
+                setUser(userResult.data());
             } catch (error) {
                 setError(error);
                 toast.error("An error occured try again later!");
@@ -29,20 +31,20 @@ export default function Profile({
             }
         }
         getData();
-    }, [match.params.userId,error,message])
-    let properDate = new Date(author?.date.seconds * 1000).toLocaleDateString();
+    }, [match.params.userId, error, message])
+    let properDate = new Date(user?.date.seconds * 1000).toLocaleDateString();
 
     async function changePhoto(e) {
         try {
 
-            
+
             let picture = e.target.files[0];
-          
+
             if (!picture.name.match(/\.(jpg|jpeg|png|gif)$/)) {
-               
+
                 toast.warn('Please select a valid image.')
                 return false;
-              }
+            }
 
             let uploadResult = await uploadFile('users', picture);
             let test = await updateUserPhoto(match.params.userId, uploadResult);
@@ -61,22 +63,22 @@ export default function Profile({
 
     return (
         <>
-     
+
 
             <div className="bg-gray-100">
                 <div className="w-full text-white bg-main-color">
                     <div className="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
-                      
+
                         <div className="container mx-auto my-5 p-5">
                             <div className="md:flex no-wrap md:-mx-2 ">
 
                                 <div className="w-full md:w-3/12 md:mx-2">
                                     {/* <!-- Profile Card --> */}
-                                    
+
                                     <div className="bg-white p-3 border-t-4 border-gray-600">
                                         <div className="image overflow-hidden">
                                             <img className="h-auto w-full mx-auto"
-                                                src={author?.image}
+                                                src={user?.image}
                                                 alt="" />
                                         </div>
                                         <div className="flex justify-center">
@@ -86,7 +88,7 @@ export default function Profile({
                                             </label>
                                         </div>
                                         <div className="flex justify-center">
-                                            <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">{author?.firstname} {author?.lastname}</h1>
+                                            <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">{user?.firstname} {user?.lastname}</h1>
                                         </div>
                                         <ul
                                             className="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
@@ -120,21 +122,21 @@ export default function Profile({
                                             <div className="grid md:grid-cols-2 text-sm">
                                                 <div className="grid grid-cols-2">
                                                     <div className="px-4 py-2 font-semibold">First Name</div>
-                                                    <div className="px-4 py-2">{author?.firstname}</div>
+                                                    <div className="px-4 py-2">{user?.firstname}</div>
                                                 </div>
                                                 <div className="grid grid-cols-2">
                                                     <div className="px-4 py-2 font-semibold">Last Name</div>
-                                                    <div className="px-4 py-2">{author?.lastname}</div>
+                                                    <div className="px-4 py-2">{user?.lastname}</div>
                                                 </div>
                                                 <div className="grid grid-cols-2">
                                                     <div className="px-4 py-2 font-semibold">Post Count:</div>
-                                                    <div className="px-4 py-2">{author?.postCount}</div>
+                                                    <div className="px-4 py-2">{user?.postCount}</div>
                                                 </div>
 
                                                 <div className="grid grid-cols-2">
                                                     <div className="px-4 py-2 font-semibold">Email.</div>
                                                     <div className="px-4 py-2">
-                                                        <Link className="text-blue-800" to="">{author?.email}</Link>
+                                                        <Link className="text-blue-800" to="">{user?.email}</Link>
                                                     </div>
                                                 </div>
 
