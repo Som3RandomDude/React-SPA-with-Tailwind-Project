@@ -1,4 +1,4 @@
-# React Single Page Application with Tailwind 
+# React Single Page Application with Tailwind and Firebase
 
 ## Available Scripts
 
