@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react"
 import { toast } from "react-toastify";
 import { AuthContext } from "../contexts/authContext.js";
-import { containsUser, deletePost, dislikePost, getPost, likePost } from "../services/postsService.js"
-import { getUser } from "../services/userService.js";
+import { containsUser, deletePost, dislikePost, getPost, likePost } from "../../services/postsService.js"
+import { getUser } from "../../services/userService.js";
 import { Link } from "react-router-dom";
 import './Post.css';
 

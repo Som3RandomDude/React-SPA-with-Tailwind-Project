@@ -3,9 +3,9 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../contexts/authContext.js';
 import { Loading } from '../loading/Loading.js';
 
-import { uploadFile } from '../services/fileService.js';
-import { createPost } from '../services/postsService.js';
-import { createUserPost } from '../services/userService.js';
+import { uploadFile } from '../../services/fileService.js';
+import { createPost } from '../../services/postsService.js';
+import { createUserPost } from '../../services/userService.js';
 import './Create.css';
 
 export default function Create({

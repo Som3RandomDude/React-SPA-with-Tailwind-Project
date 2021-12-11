@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { login } from "../services/authService.js";
+import { login } from "../../services/authService.js";
 
 
 export default function Login({

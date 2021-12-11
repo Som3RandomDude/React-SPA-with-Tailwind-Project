@@ -13,10 +13,10 @@ import NotFound from "./components/404/404.js";
 
 import { useEffect, useState } from 'react';
 import { AuthContext } from './components/contexts/authContext.js';
-import { auth } from "./components/utils/firebase.js";
+import { auth } from "./utils/firebase.js";
 import UserPosts from "./components/post/UserPosts.js";
 import Edit from "./components/edit/Edit.js";
-import RouteGuard from "./components/routeguard/RouteGuard.js";
+import RouteGuard from "./components/HOC/RouteGuard.js";
 
 
 

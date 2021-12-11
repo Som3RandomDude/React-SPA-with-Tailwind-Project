@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { toast } from "react-toastify";
-import { getPost } from "../services/postsService.js"
-import { getUser } from "../services/userService.js";
+import { getPost } from "../../services/postsService.js"
+import { getUser } from "../../services/userService.js";
 import { UserPostCard } from "./UserPostCard.js";
 
 

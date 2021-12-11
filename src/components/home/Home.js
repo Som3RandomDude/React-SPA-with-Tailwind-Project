@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { PostCard } from "../post/PostCard.js";
 import { LatestPost } from "../post/LatestPost.js";
-import { getAllPosts, getPost, getLatestPosts, orderPosts, orderPostsByCategory } from "../services/postsService.js";
+import { getAllPosts, getPost, getLatestPosts, orderPosts, orderPostsByCategory } from "../../services/postsService.js";
 import { TopAuthors } from "./authors/TopAuthors.js";
 import { Loading } from "../loading/Loading.js";
 import { toast } from "react-toastify";

@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 
-import { uploadFile } from '../services/fileService.js';
-import { getUser, updateUserPhoto } from '../services/userService.js';
+import { uploadFile } from '../../services/fileService.js';
+import { getUser, updateUserPhoto } from '../../services/userService.js';
 import './Profile.css';
 
 export default function Profile({

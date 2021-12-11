@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import { register } from "../services/authService.js";
-import { storeUser } from "../services/userService.js";
+import { register } from "../../services/authService.js";
+import { storeUser } from "../../services/userService.js";
 
 import "./Register.css";
 

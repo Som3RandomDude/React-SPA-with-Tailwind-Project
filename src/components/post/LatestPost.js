@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { getUser } from "../services/userService.js";
+import { getUser } from "../../services/userService.js";
 
 
 export const LatestPost = (props) => {

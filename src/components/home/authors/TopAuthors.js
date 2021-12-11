@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { toast } from "react-toastify";
-import { getTopUsers } from "../../services/userService.js"
+import { getTopUsers } from "../../../services/userService.js"
 import { Author } from "./Author.js";
 
 export function TopAuthors() {
