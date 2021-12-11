@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { login } from "../../services/authService.js";
-
+import "./Login.css";
 
 export default function Login({
     history
