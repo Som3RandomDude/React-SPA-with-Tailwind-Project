@@ -36,16 +36,16 @@ Deploys the current build from the build folder for hosting
 │   App.js
 │   index.css
 │   index.js
-│
+│   
 ├───components
 │   ├───404
 │   │       404.css
 │   │       404.js
-│   │
+│   │       
 │   ├───create
 │   │       Create.css
 │   │       Create.js
-│   │
+│   │       
 │   ├───edit
 │   │       Edit.css
 │   │       Edit.js
@@ -70,6 +70,37 @@ Deploys the current build from the build folder for hosting
 │   │           TopAuthors.js
 │   │
 │   ├───loading
+│   │       Loading.css
+│   │       Loading.js
+│   │
+│   ├───login
+│   │       Login.css
+│   │       Login.js
+│   │
+│   ├───post
+│   │       LatestPost.js
+│   │       OldPostPage.js
+│   │       Post.css
+│   │       Post.js
+│   │       PostCard.js
+│   │       UserPostCard.js
+│   │       UserPosts.js
+│   │
+│   ├───profile
+│   │       Profile.css
+│   │       Profile.js
+│   │
+│   └───register
+│           Register.css
+│           Register.js
+│
+├───contexts
+│       authContext.js
+│
+├───services
+│       authService.js
+│       fileService.js
+│       postsService.js
 │       userService.js
 │
 └───utils
