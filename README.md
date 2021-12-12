@@ -34,10 +34,8 @@ Deploys the current build from the build folder for hosting
 .
 │   App.css
 │   App.js
-│   App.test.js
 │   index.css
 │   index.js
-│   reportWebVitals.js
 │
 ├───components
 │   ├───404
@@ -72,36 +70,6 @@ Deploys the current build from the build folder for hosting
 │   │           TopAuthors.js
 │   │
 │   ├───loading
-│   │       Loading.css
-│   │       Loading.js
-│   │
-│   ├───login
-│   │       Login.js
-│   │       
-│   ├───post
-│   │       LatestPost.js
-│   │       OldPostPage.js
-│   │       Post.css
-│   │       Post.js
-│   │       PostCard.js
-│   │       UserPostCard.js
-│   │       UserPosts.js
-│   │
-│   ├───profile
-│   │       Profile.css
-│   │       Profile.js
-│   │
-│   └───register
-│           Register.css
-│           Register.js
-│
-├───contexts
-│       authContext.js
-│
-├───services
-│       authService.js
-│       fileService.js
-│       postsService.js
 │       userService.js
 │
 └───utils
