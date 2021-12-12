@@ -42,7 +42,7 @@ export default function UserPosts({
                     <div className="grid grid-cols-1 gap-8 mt-6">
                         {posts?.length > 0
                             ? posts?.map(post =><UserPostCard key={post} id={post} />)
-                            : <div className="flex justify-center">No posts yet... </div>
+                            : <div className="flex justify-center min-h-screen">No posts yet... </div>
                             }
                     </div>
                 </div>

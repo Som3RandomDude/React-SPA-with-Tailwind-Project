@@ -69,6 +69,7 @@ export const getPost = (id) => {
 
 export const getAllPosts = async () => {
     return getDocs(collection(db, "posts"));
+    
 }
 
 export const getLatestPosts = (numberOfPosts) => {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { toast } from "react-toastify";
 import { getTopUsers } from "../../../services/userService.js"
 import { Author } from "./Author.js";
@@ -6,20 +6,26 @@ import { Author } from "./Author.js";
 export function TopAuthors() {
     const [authors, setAuthors] = useState();
     const [error, setError] = useState();
+    const mounted = useRef(false);
+
     useEffect(() => {
         async function getData() {
             try {
                 let authorsSnapshot = await getTopUsers(5);
 
                 setAuthors(authorsSnapshot.docs.map(doc => ({ ...doc.data(), authorId: doc.id })));
+                return () => {
+                    mounted.current = false;
+                    authorsSnapshot();
+                };
 
             } catch (error) {
-                setError(error)
+                setError(error);
                 toast.error("An error occured try again later!");
             }
 
         }
-        getData();
+        getData(authors);
     }, [])
     
     return (
