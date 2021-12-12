@@ -82,7 +82,7 @@ export const orderPosts = (order) => {
     return getDocs(queryOptions);
 }
 export const orderPostsByCategory = (category) => {
-    const queryOptions = query(collection(db, 'posts'), orderBy(category));
+    const queryOptions = query(collection(db, 'posts'),where("category","==",category));
     return getDocs(queryOptions);
 }
 export const deletePost = (id) => {
