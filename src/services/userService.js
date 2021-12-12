@@ -1,5 +1,5 @@
 import { db } from "../utils/firebase.js";
-import { collection, addDoc, updateDoc, getDocs, setDoc, getDoc, serverTimestamp, doc, arrayUnion, arrayRemove, query, orderBy, limit, increment } from "@firebase/firestore";
+import { collection, updateDoc, getDocs, setDoc, getDoc, serverTimestamp, doc, arrayUnion, arrayRemove, query, orderBy, limit, increment } from "@firebase/firestore";
 let imageRef="https://firebasestorage.googleapis.com/v0/b/react-spa-project-9f706.appspot.com/o/users%2Fdefault.png?alt=media&token=b6225268-cf55-433a-89d8-65379632cfbc";
 
 export const storeUser = (firstName, lastName, email, id) => {

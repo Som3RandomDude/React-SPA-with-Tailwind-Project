@@ -5,8 +5,8 @@ import { AuthContext } from '../../contexts/authContext.js';
 import { Loading } from '../loading/Loading.js';
 
 import { uploadFile } from '../../services/fileService.js';
-import { createPost, getPost, updatePost } from '../../services/postsService.js';
-import { createUserPost } from '../../services/userService.js';
+import {  getPost, updatePost } from '../../services/postsService.js';
+
 import './Edit.css';
 
 export default function Edit({

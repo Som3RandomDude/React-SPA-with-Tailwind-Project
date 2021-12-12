@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+
 import { PostCard } from "../post/PostCard.js";
 import { LatestPost } from "../post/LatestPost.js";
-import { getAllPosts, getPost, getLatestPosts, orderPosts, orderPostsByCategory } from "../../services/postsService.js";
+import {  getLatestPosts, orderPosts, orderPostsByCategory } from "../../services/postsService.js";
 import { TopAuthors } from "./authors/TopAuthors.js";
 import { Loading } from "../loading/Loading.js";
 import { toast } from "react-toastify";
@@ -92,6 +92,7 @@ export default function Home() {
                   </select>
                 </div>
               </div>
+
               {posts?.length > 0
                 ? posts?.map(props => <PostCard key={props.postId} props={props} />)
                 : <div className="flex justify-center min-h-screen">No posts yet... </div>
@@ -128,6 +129,7 @@ export default function Home() {
 
 
               <TopAuthors />
+
               <div className="px-8 mt-10">
                 <h1 className="mb-4 text-xl font-bold text-gray-700">Categories</h1>
                 <div className="flex flex-col max-w-sm px-4 py-6 mx-auto bg-white rounded-lg shadow-md">

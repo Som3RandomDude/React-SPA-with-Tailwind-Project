@@ -1,0 +1,42 @@
+[debug] [2021-12-12T17:03:15.668Z] ----------------------------------------------------------------------
+[debug] [2021-12-12T17:03:15.672Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\ivan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2021-12-12T17:03:15.673Z] CLI Version:   9.23.1
+[debug] [2021-12-12T17:03:15.673Z] Platform:      win32
+[debug] [2021-12-12T17:03:15.673Z] Node Version:  v16.13.1
+[debug] [2021-12-12T17:03:15.685Z] Time:          Sun Dec 12 2021 19:03:15 GMT+0200 (Eastern European Standard Time)
+[debug] [2021-12-12T17:03:15.686Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-12-12T17:03:15.693Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2021-12-12T17:03:15.821Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-12-12T17:03:15.821Z] > authorizing via signed-in user (skuller202@gmail.com)
+[debug] [2021-12-12T17:03:15.822Z] [iam] checking project react-spa-project-9f706 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2021-12-12T17:03:15.825Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-12-12T17:03:15.825Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-12-12T17:03:15.982Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Sun, 12 Dec 2021 17:03:17 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-12-12T17:03:15.998Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/react-spa-project-9f706:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2021-12-12T17:03:16.292Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2021-12-12T17:03:16.292Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2021-12-12T17:03:16.881Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 12 Dec 2021 17:03:17 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=767","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-12-12T17:03:16.885Z] > refreshing access token with scopes: []
+[debug] [2021-12-12T17:03:16.885Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-12-12T17:03:17.016Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","date":"Sun, 12 Dec 2021 17:03:18 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-12-12T17:03:17.029Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/react-spa-project-9f706 [none]
+[debug] [2021-12-12T17:03:17.348Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/react-spa-project-9f706 200
+[debug] [2021-12-12T17:03:17.348Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/react-spa-project-9f706 {"projectId":"react-spa-project-9f706","projectNumber":"215822673291","displayName":"React SPA Project","name":"projects/react-spa-project-9f706","resources":{"hostingSite":"react-spa-project-9f706","storageBucket":"react-spa-project-9f706.appspot.com","locationId":"europe-west"},"state":"ACTIVE"}
+[info] 
+[info] === Deploying to 'react-spa-project-9f706'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2021-12-12T17:03:17.364Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-12-12T17:03:17.364Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-12-12T17:03:17.479Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","date":"Sun, 12 Dec 2021 17:03:18 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-12-12T17:03:17.488Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/react-spa-project-9f706/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2021-12-12T17:03:17.616Z] Error: getaddrinfo ENOTFOUND firebasehosting.googleapis.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:71:26)
+[error] 
+[error] Error: Server Error. getaddrinfo ENOTFOUND firebasehosting.googleapis.com
