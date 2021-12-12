@@ -16,7 +16,7 @@ export function TopAuthors() {
                 setAuthors(authorsSnapshot.docs.map(doc => ({ ...doc.data(), authorId: doc.id })));
                 return () => {
                     mounted.current = false;
-                    authorsSnapshot();
+
                 };
 
             } catch (error) {

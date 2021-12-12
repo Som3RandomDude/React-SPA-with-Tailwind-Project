@@ -33,8 +33,6 @@ export default function Home() {
         };
       } catch (error) {
         setError(error);
-        toast.error("An error occured try again later!");
-
       }
 
     }
@@ -76,7 +74,7 @@ export default function Home() {
 
     <div className="  items-center justify-center" >
 
-      <div className=" bg-gray-100">
+      <div >
 
 
         <div className="px-6 py-8">
