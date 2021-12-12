@@ -3,12 +3,10 @@ import { toast } from "react-toastify";
 import { getPost } from "../../services/postsService.js"
 import { getUser } from "../../services/userService.js";
 import { UserPostCard } from "./UserPostCard.js";
-
-
 export default function UserPosts({
     match
 }) {
-
+  
     const [error, setError] = useState(null);
     const [posts, setPosts] = useState(null);
 

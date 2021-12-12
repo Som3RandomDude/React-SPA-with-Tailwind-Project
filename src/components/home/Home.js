@@ -26,8 +26,8 @@ export default function Home() {
         setLatest(latestSnapshot.docs.map(doc => ({ ...doc.data(), postId: doc.id })));
         setLoading(false);
         return () => {
-          postsSnapshot()
-          latestSnapshot()
+          postsSnapshot();
+          latestSnapshot();
           mounted.current = false;
         };
       } catch (error) {
