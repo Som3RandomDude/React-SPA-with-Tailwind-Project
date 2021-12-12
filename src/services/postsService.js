@@ -1,5 +1,5 @@
 import { db } from "../utils/firebase.js";
-import { collection, query, where, arrayUnion, arrayRemove, addDoc, setDoc, increment, deleteDoc, getDoc, getDocs, updateDoc, serverTimestamp, doc, limit, orderBy } from "@firebase/firestore";
+import { collection, query, where, arrayUnion, arrayRemove, addDoc, setDoc, increment, deleteDoc, getDoc, getDocs, updateDoc, serverTimestamp, doc, limit, orderBy ,onSnapshot} from "@firebase/firestore";
 
 
 
@@ -68,6 +68,7 @@ export const getPost = (id) => {
 }
 
 export const getAllPosts = async () => {
+   
     return getDocs(collection(db, "posts"));
     
 }
