@@ -74,7 +74,7 @@ export default function Profile({
             {loading
                 ? <Loading />
                 :
-                <div className="bg-gray-100">
+                <div >
                     <div className="w-full text-white bg-main-color">
                         <div className="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
 
