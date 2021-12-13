@@ -68,13 +68,13 @@ export const getPost = (id) => {
 }
 
 export const getAllPosts = async () => {
-   
+
     return getDocs(collection(db, "posts"));
-    
+
 }
 
-export const getLatestPosts = (numberOfPosts) => {
-    const queryOptions = query(collection(db, 'posts'), orderBy('date', 'desc'), limit(numberOfPosts));
+export const getLatestPosts = (numberOfPosts, order) => {
+    const queryOptions = query(collection(db, 'posts'), orderBy('date', order), limit(numberOfPosts));
     return getDocs(queryOptions);
 }
 export const orderPosts = (order) => {
@@ -82,7 +82,7 @@ export const orderPosts = (order) => {
     return getDocs(queryOptions);
 }
 export const orderPostsByCategory = (category) => {
-    const queryOptions = query(collection(db, 'posts'),where("category","==",category));
+    const queryOptions = query(collection(db, 'posts'), where("category", "==", category));
     return getDocs(queryOptions);
 }
 export const deletePost = (id) => {

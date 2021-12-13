@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { PostCard } from "../post/PostCard.js";
 import { LatestPost } from "../post/LatestPost.js";
-import {  getLatestPosts, orderPosts, orderPostsByCategory } from "../../services/postsService.js";
+import { getLatestPosts, orderPosts, orderPostsByCategory } from "../../services/postsService.js";
 import { TopAuthors } from "./authors/TopAuthors.js";
 import { Loading } from "../loading/Loading.js";
 import { toast } from "react-toastify";
@@ -13,15 +13,16 @@ export default function Home() {
   const [error, setError] = useState(null);
   const [latest, setLatest] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [test, setTest] = useState(false);
+  const [order, setOrder] = useState('desc');
   const mounted = useRef(false);
 
   useEffect(() => {
     async function getData() {
       try {
         setLoading(true);
-        let postsSnapshot = await getLatestPosts(10);
-        let latestSnapshot = await getLatestPosts(1);
+
+        let postsSnapshot = await getLatestPosts(10, order);
+        let latestSnapshot = await getLatestPosts(1, order);
 
         setPosts(postsSnapshot.docs.map(doc => ({ ...doc.data(), postId: doc.id })));
         setLatest(latestSnapshot.docs.map(doc => ({ ...doc.data(), postId: doc.id })));
@@ -44,7 +45,7 @@ export default function Home() {
     console.log(selectedValue);
     try {
       let postsSnapshot = await orderPosts(selectedValue);
-      
+      setOrder(selectedValue);
       setPosts(postsSnapshot.docs.map(doc => ({ ...doc.data(), postId: doc.id })));
     } catch (error) {
       setError(error);
