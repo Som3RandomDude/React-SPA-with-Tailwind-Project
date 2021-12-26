@@ -70,14 +70,14 @@ export default function Create({
 
         <>
 
-            <div className="heading text-center font-bold text-2xl m-5 text-gray-800">New Post</div>
+            <div className="m-5 text-2xl font-bold text-center text-gray-800 heading">New Post</div>
             <form action="#" method="POST" onSubmit={createPostHandler} className="formDiv">
 
-                <div className="editor mx-auto w-10/12 flex flex-col bg-white text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
+                <div className="flex flex-col w-10/12 max-w-2xl p-4 mx-auto text-gray-800 bg-white border border-gray-300 shadow-lg editor">
 
-                    <input className="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" spellCheck="false" required placeholder="Title" type="text" name="title" />
-                    <input className="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" spellCheck="false" required placeholder="Description" type="text" name="description" />
-                    <select name="category" className="bg-gray-100 border border-gray-300 p-2 mb-4 outline-none">
+                    <input className="p-2 mb-4 bg-gray-100 border border-gray-300 outline-none title" spellCheck="false" required placeholder="Title" type="text" name="title" />
+                    <input className="p-2 mb-4 bg-gray-100 border border-gray-300 outline-none title" spellCheck="false" required placeholder="Description" type="text" name="description" />
+                    <select name="category" className="p-2 mb-4 bg-gray-100 border border-gray-300 outline-none">
                         <option>NodeJs</option>
                         <option>Laravel</option>
                         <option>Design</option>
@@ -85,11 +85,11 @@ export default function Create({
                         <option>React</option>
                         <option>Vue</option>
                     </select>
-                    <textarea className="description bg-gray-100 sec p-3 h-60 border border-gray-3  00 outline-none" required spellCheck="false" placeholder="Type in your content..." name="content"></textarea>
+                    <textarea className="p-3 bg-gray-100 border outline-none description sec h-60 border-gray-3 00" required spellCheck="false" placeholder="Type in your content..." name="content"></textarea>
 
 
-                    <div className="upload flex text-gray-500 mt-2 ">
-                        <label className="btn border border-gray-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 mt-2  bg-gray-500">
+                    <div className="flex mt-2 text-gray-500 upload ">
+                        <label className="p-1 px-4 mt-2 ml-2 font-semibold text-gray-200 bg-gray-500 border border-gray-500 cursor-pointer btn">
 
                             <input type="file" className='hidden'
                                 id="upload" name="upload"
@@ -99,10 +99,10 @@ export default function Create({
 
                     </div>
 
-                    <div className="buttons flex">
+                    <div className="flex buttons">
 
-                        <button className="btn border border-gray-300 p-1 px-4 font-semibold cursor-pointer text-gray-500 ml-auto">Cancel</button>
-                        <button className="btn border border-gray-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-gray-500">Post</button>
+                        <button className="p-1 px-4 ml-auto font-semibold text-gray-500 border border-gray-300 cursor-pointer btn">Cancel</button>
+                        <button className="p-1 px-4 ml-2 font-semibold text-gray-200 bg-gray-500 border border-gray-500 cursor-pointer btn">Post</button>
                     </div>
                 </div>
             </form>

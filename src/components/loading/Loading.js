@@ -2,15 +2,15 @@ import "./Loading.css"
 export function Loading() {
     return (
 
-        <div className="loading fixed  top-0 left-0 z-50 w-screen h-screen flex items-center justify-center" >
-            <div className="bg-white border py-2 px-5 rounded-lg flex items-center flex-col">
-                <div className="loader-dots block relative w-20 h-5 mt-2">
-                    <div className="loader-dots absolute top-0 mt-1 w-3 h-3 rounded-full bg-green-500"></div>
-                    <div className="loader-dots absolute top-0 mt-1 w-3 h-3 rounded-full bg-green-500"></div>
-                    <div className="loader-dots absolute top-0 mt-1 w-3 h-3 rounded-full bg-green-500"></div>
-                    <div className="loader-dots absolute top-0 mt-1 w-3 h-3 rounded-full bg-green-500"></div>
+        <div className="fixed top-0 left-0 z-50 flex items-center justify-center w-screen h-screen loading" >
+            <div className="flex flex-col items-center px-5 py-2 bg-white border rounded-lg">
+                <div className="relative block w-20 h-5 mt-2 loader-dots">
+                    <div className="absolute top-0 w-3 h-3 mt-1 bg-green-500 rounded-full loader-dots"></div>
+                    <div className="absolute top-0 w-3 h-3 mt-1 bg-green-500 rounded-full loader-dots"></div>
+                    <div className="absolute top-0 w-3 h-3 mt-1 bg-green-500 rounded-full loader-dots"></div>
+                    <div className="absolute top-0 w-3 h-3 mt-1 bg-green-500 rounded-full loader-dots"></div>
                 </div>
-                <div className="text-gray-500 text-xs font-light mt-2 text-center">
+                <div className="mt-2 text-xs font-light text-center text-gray-500">
                     Please wait...
                 </div>
             </div>

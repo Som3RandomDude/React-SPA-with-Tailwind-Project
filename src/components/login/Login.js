@@ -48,27 +48,15 @@ export default function Login({
                 ? <Loading />
                 :
                 <div
-                    className="min-h-screen flex flex-col items-center justify-center bg-gray-100"
+                    className="flex flex-col items-center justify-center min-h-screen bg-gray-100"
                 >
                     <div
-                        className="
-        flex flex-col
-        bg-white
-        shadow-md
-        px-4
-        sm:px-6
-        md:px-8
-        lg:px-10
-        py-8
-        rounded-3xl
-        w-50
-        max-w-md
-      "
+                        className="flex flex-col max-w-md px-4 py-8 bg-white shadow-md sm:px-6 md:px-8 lg:px-10 rounded-3xl w-50"
                     >
-                        <div className="font-medium self-center text-xl sm:text-3xl text-gray-800">
+                        <div className="self-center text-xl font-medium text-gray-800 sm:text-3xl">
                             Welcome Back
                         </div>
-                        <div className="mt-4 self-center text-xl sm:text-sm text-gray-800">
+                        <div className="self-center mt-4 text-xl text-gray-800 sm:text-sm">
                             Enter your credentials to access your account
                         </div>
 
@@ -82,36 +70,16 @@ export default function Login({
                                     >
                                     <div className="relative">
                                         <div
-                                            className="
-                  inline-flex
-                  items-center
-                  justify-center
-                  absolute
-                  left-0
-                  top-0
-                  h-full
-                  w-10
-                  text-gray-400
-                "
+                                            className="absolute top-0 left-0 inline-flex items-center justify-center w-10 h-full text-gray-400 "
                                         >
-                                            <i className="fas fa-at text-blue-500"></i>
+                                            <i className="text-blue-500 fas fa-at"></i>
                                         </div>
 
                                         <input
                                             id="email"
                                             type="email"
                                             name="email"
-                                            className="
-                  text-sm
-                  placeholder-gray-500
-                  pl-10
-                  pr-4
-                  rounded-2xl
-                  border border-gray-400
-                  w-full
-                  py-2
-                  focus:outline-none focus:border-blue-400
-                "
+                                            className="w-full py-2 pl-10 pr-4 text-sm placeholder-gray-500 border border-gray-400 rounded-2xl focus:outline-none focus:border-blue-400"
                                             placeholder="Enter your email"
                                             required
                                         />
@@ -120,25 +88,15 @@ export default function Login({
                                 <div className="flex flex-col mb-6">
                                     <label
                                         htmlFor="password"
-                                        className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
+                                        className="mb-1 text-xs tracking-wide text-gray-600 sm:text-sm"
                                     >Password:</label
                                     >
                                     <div className="relative">
                                         <div
-                                            className="
-                  inline-flex
-                  items-center
-                  justify-center
-                  absolute
-                  left-0
-                  top-0
-                  h-full
-                  w-10
-                  text-gray-400
-                "
+                                            className="absolute top-0 left-0 inline-flex items-center justify-center w-10 h-full text-gray-400 "
                                         >
                                             <span>
-                                                <i className="fas fa-lock text-blue-500"></i>
+                                                <i className="text-blue-500 fas fa-lock"></i>
                                             </span>
                                         </div>
 
@@ -146,17 +104,7 @@ export default function Login({
                                             id="password"
                                             type="password"
                                             name="password"
-                                            className="
-                  text-sm
-                  placeholder-gray-500
-                  pl-10
-                  pr-4
-                  rounded-2xl
-                  border border-gray-400
-                  w-full
-                  py-2
-                  focus:outline-none focus:border-blue-400
-                "
+                                            className="w-full py-2 pl-10 pr-4 text-sm placeholder-gray-500 border border-gray-400 rounded-2xl focus:outline-none focus:border-blue-400"
                                             placeholder="Enter your password"
                                             required
                                         />
@@ -166,28 +114,12 @@ export default function Login({
                                 <div className="flex w-full">
                                     <button
                                         type="submit"
-                                        className="
-                flex
-                mt-2
-                items-center
-                justify-center
-                focus:outline-none
-                text-white text-sm
-                sm:text-base
-                bg-gray-600
-                hover:bg-gray-500
-                rounded-2xl
-                py-2
-                w-full
-                transition
-                duration-150
-                ease-in
-              "
+                                        className="flex items-center justify-center w-full py-2 mt-2 text-sm text-white transition duration-150 ease-in bg-gray-600 focus:outline-none sm:text-base hover:bg-gray-500 rounded-2xl"
                                     >
                                         <span className="mr-2 uppercase">Sign In</span>
                                         <span>
                                             <svg
-                                                className="h-6 w-6"
+                                                className="w-6 h-6"
                                                 fill="none"
                                                 strokeLinecap="round"
                                                 strokeLinejoin="round"
@@ -205,23 +137,17 @@ export default function Login({
                             </form>
                         </div>
                     </div>
-                    <div className="flex justify-center items-center mt-6">
+                    <div className="flex items-center justify-center mt-6">
                         <Link
                             to="/register"
                             target="_blank"
-                            className="
-          inline-flex
-          items-center
-          text-gray-700
-          font-medium
-          text-xs text-center
-        "
+                            className="inline-flex items-center text-xs font-medium text-center text-gray-700 "
                         >
                             <span className="ml-2"
                             />You don't have an account? </Link>
                         <Link
                             to="/register"
-                            className="text-xs ml-2 text-blue-500 font-semibold"
+                            className="ml-2 text-xs font-semibold text-blue-500"
                         >Register now</Link><span />
 
                     </div>

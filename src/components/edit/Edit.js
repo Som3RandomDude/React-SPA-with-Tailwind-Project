@@ -96,14 +96,14 @@ export default function Edit({
 
         <>
 
-            <div className="heading text-center font-bold text-2xl m-5 text-gray-800">Edit Post</div>
+            <div className="m-5 text-2xl font-bold text-center text-gray-800 heading">Edit Post</div>
             <form action="#" method="POST" onSubmit={EditPostHandler} className="formDiv">
 
-                <div className="editor mx-auto w-10/12 flex flex-col bg-white text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
+                <div className="flex flex-col w-10/12 max-w-2xl p-4 mx-auto text-gray-800 bg-white border border-gray-300 shadow-lg editor">
 
-                    <input className="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" spellCheck="false" required placeholder="Title" type="text" name="title" onChange={handleChange} value={post?.title ? post.title : ""} />
-                    <input className="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" spellCheck="false" required placeholder="Description" type="text" name="description" onChange={handleChange} value={post?.description ? post?.description : ""} />
-                    <select name="category" className="bg-gray-100 border border-gray-300 p-2 mb-4 outline-none " onChange={handleChange} value={post?.category}>
+                    <input className="p-2 mb-4 bg-gray-100 border border-gray-300 outline-none title" spellCheck="false" required placeholder="Title" type="text" name="title" onChange={handleChange} value={post?.title ? post.title : ""} />
+                    <input className="p-2 mb-4 bg-gray-100 border border-gray-300 outline-none title" spellCheck="false" required placeholder="Description" type="text" name="description" onChange={handleChange} value={post?.description ? post?.description : ""} />
+                    <select name="category" className="p-2 mb-4 bg-gray-100 border border-gray-300 outline-none " onChange={handleChange} value={post?.category}>
                         <option>NodeJs</option>
                         <option>Laravel</option>
                         <option>Design</option>
@@ -111,14 +111,13 @@ export default function Edit({
                         <option>React</option>
                         <option>Vue</option>
                     </select>
-                    <textarea className="description
-                     bg-gray-100 sec p-3 h-60 border border-gray-3  00 outline-none" required spellCheck="false" placeholder="Type in your content..." onChange={handleChange} value={post?.content} name="content">
+                    <textarea className="p-3 bg-gray-100 border outline-none description sec h-60 border-gray-3 00" required spellCheck="false" placeholder="Type in your content..." onChange={handleChange} value={post?.content} name="content">
 
                     </textarea>
 
 
-                    <div className="upload flex mt-2 ">
-                        <label className="btn border border-gray-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 mt-2  bg-gray-500">
+                    <div className="flex mt-2 upload ">
+                        <label className="p-1 px-4 mt-2 ml-2 font-semibold text-gray-200 bg-gray-500 border border-gray-500 cursor-pointer btn">
 
                             <input type="file" className='hidden'
                                 id="upload" name="upload"
@@ -128,9 +127,9 @@ export default function Edit({
 
                     </div>
 
-                    <div className="buttons flex justify-end">
-                        <Link to={`/post/${match.params.postId}`}>   <button className="btn border border-gray-300 p-1 px-4 font-semibold cursor-pointer text-gray-500 ml-auto">Cancel</button></Link>
-                        <button className="btn border border-gray-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-gray-500">Post</button>
+                    <div className="flex justify-end buttons">
+                        <Link to={`/post/${match.params.postId}`}>   <button className="p-1 px-4 ml-auto font-semibold text-gray-500 border border-gray-300 cursor-pointer btn">Cancel</button></Link>
+                        <button className="p-1 px-4 ml-2 font-semibold text-gray-200 bg-gray-500 border border-gray-500 cursor-pointer btn">Post</button>
                     </div>
                 </div>
             </form>

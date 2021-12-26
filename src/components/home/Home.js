@@ -73,7 +73,7 @@ export default function Home() {
 
   return (
 
-    <div className="  items-center justify-center" >
+    <div className="items-center justify-center " >
 
       <div >
 
@@ -134,19 +134,19 @@ export default function Home() {
                 <div className="flex flex-col max-w-sm px-4 py-6 mx-auto bg-white rounded-lg shadow-md">
                   <ul onClick={categoryHandler}>
                     <li className="mt-2" >
-                      <button className="mx-1 font-bold cursor-pointer  text-gray-700 hover:text-gray-600 hover:underline" value="NodeJs">- NodeJs</button>
+                      <button className="mx-1 font-bold text-gray-700 cursor-pointer hover:text-gray-600 hover:underline" value="NodeJs">- NodeJs</button>
                     </li>
                     <li className="mt-2" >
-                      <button className="mx-1 font-bold cursor-pointer  text-gray-700 hover:text-gray-600 hover:underline" value="Vue">- Vue</button>
+                      <button className="mx-1 font-bold text-gray-700 cursor-pointer hover:text-gray-600 hover:underline" value="Vue">- Vue</button>
                     </li>
                     <li className="mt-2" >
-                      <button className="mx-1 font-bold cursor-pointer  text-gray-700 hover:text-gray-600 hover:underline" value="Design">- Design</button>
+                      <button className="mx-1 font-bold text-gray-700 cursor-pointer hover:text-gray-600 hover:underline" value="Design">- Design</button>
                     </li>
                     <li className="mt-2" >
-                      <button className="mx-1 font-bold cursor-pointer  text-gray-700 hover:text-gray-600 hover:underline" value="Angular">- Angular</button>
+                      <button className="mx-1 font-bold text-gray-700 cursor-pointer hover:text-gray-600 hover:underline" value="Angular">- Angular</button>
                     </li>
                     <li className="mt-2" >
-                      <button className="mx-1 font-bold cursor-pointer  text-gray-700 hover:text-gray-600 hover:underline" value="React">- React</button>
+                      <button className="mx-1 font-bold text-gray-700 cursor-pointer hover:text-gray-600 hover:underline" value="React">- React</button>
                     </li>
                   </ul>
                 </div>
